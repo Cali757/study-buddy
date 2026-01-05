@@ -6,13 +6,18 @@ export interface Lesson {
   description: string;
   order: number;
   isPro: boolean;
+  courseId: string;
+  courseName: string;
+  content: string;
+  intro?: string;
+  summary?: string;
+  visible?: boolean;
 }
 
 export interface Quiz {
   id: string;
   lessonId: string;
   title: string;
-  isPro?: boolean;
 }
 
 export interface Question {
@@ -21,16 +26,5 @@ export interface Question {
   question: string;
   options: string[];
   correctIndex: number;
-}
-
-export interface UserProfile {
-  email: string;
-  plan: 'free' | 'pro';
-  stripeCustomerId?: string;
-}
-
-export interface SubscriptionStatus {
-  status: 'active' | 'inactive';
-  currentPeriodEnd: number;
 }
 
