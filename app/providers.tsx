@@ -22,6 +22,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
     return () => {
       window.fetch = originalFetch;
     };
+
+    // Register service worker to intercept identitytoolkit calls at network layer
+    if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/mock-auth-sw.js').catch(() => {});
+    }
   }, []);
 
   return <>{children}</>;
