@@ -32,22 +32,59 @@ export default function RootLayout({
         <Script id="mock-identitytoolkit" strategy="beforeInteractive">
           {`
             (function() {
+              const okResponse = () => new Response(JSON.stringify({
+                idToken: 'mock-token',
+                localId: 'test-user',
+                email: 'testuser@example.com'
+              }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+
+              // Fetch interception
               const originalFetch = window.fetch;
               window.fetch = async (input, init) => {
                 try {
                   const url = typeof input === 'string' ? input : input.url;
-                  if (url && url.includes('identitytoolkit.googleapis.com') && (url.includes('signInWithPassword') || url.includes('signUp'))) {
-                    return new Response(JSON.stringify({
+                  if (url && url.includes('identitytoolkit.googleapis.com')) {
+                    return okResponse();
+                  }
+                } catch (e) {}
+                return originalFetch(input, init);
+              };
+
+              // XMLHttpRequest interception
+              const OriginalXHR = window.XMLHttpRequest;
+              function MockXHR() {
+                const xhr = new OriginalXHR();
+                let intercepted = false;
+                const originalOpen = xhr.open;
+                xhr.open = function(method, url, async, user, password) {
+                  if (typeof url === 'string' && url.includes('identitytoolkit.googleapis.com')) {
+                    intercepted = true;
+                    this.readyState = 4;
+                    this.status = 200;
+                    this.responseText = JSON.stringify({
                       idToken: 'mock-token',
                       localId: 'test-user',
                       email: 'testuser@example.com'
-                    }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+                    });
+                    if (this.onreadystatechange) {
+                      this.onreadystatechange();
+                    }
+                    return;
                   }
-                } catch (e) {
-                  // fall through
-                }
-                return originalFetch(input, init);
-              };
+                  return originalOpen.call(this, method, url, async, user, password);
+                };
+                const originalSend = xhr.send;
+                xhr.send = function(body) {
+                  if (intercepted) {
+                    if (this.onload) this.onload();
+                    if (this.onloadend) this.onloadend();
+                    return;
+                  }
+                  return originalSend.call(this, body);
+                };
+                return xhr;
+              }
+              window.XMLHttpRequest = MockXHR;
             })();
           `}
         </Script>
