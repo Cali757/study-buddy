@@ -76,6 +76,12 @@ export default function RootLayout({
                 const originalSend = xhr.send;
                 xhr.send = function(body) {
                   if (intercepted) {
+                    // mimic async
+                    setTimeout(() => {
+                      if (this.onload) this.onload();
+                      if (this.onloadend) this.onloadend();
+                      if (this.onreadystatechange) this.onreadystatechange();
+                    }, 0);
                     if (this.onload) this.onload();
                     if (this.onloadend) this.onloadend();
                     return;
