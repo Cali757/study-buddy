@@ -32,9 +32,11 @@ export default function LessonClient({ lessonId }: { lessonId: string }) {
           setIsPro(sub?.isPro || false);
         } catch (err) {
           console.error('Subscription fetch error:', err);
+          setIsPro(false);
         }
       } else {
-        router.push('/login');
+        setIsPro(false);
+        // Do not redirect; show gating UI for anonymous users
       }
     });
     return () => unsubscribe();
