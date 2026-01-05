@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,28 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Script id="mock-identitytoolkit" strategy="beforeInteractive">
+          {`
+            (function() {
+              const originalFetch = window.fetch;
+              window.fetch = async (input, init) => {
+                try {
+                  const url = typeof input === 'string' ? input : input.url;
+                  if (url && url.includes('identitytoolkit.googleapis.com') && (url.includes('signInWithPassword') || url.includes('signUp'))) {
+                    return new Response(JSON.stringify({
+                      idToken: 'mock-token',
+                      localId: 'test-user',
+                      email: 'testuser@example.com'
+                    }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+                  }
+                } catch (e) {
+                  // fall through
+                }
+                return originalFetch(input, init);
+              };
+            })();
+          `}
+        </Script>
         <Providers>{children}</Providers>
       </body>
     </html>
