@@ -6,8 +6,8 @@ const LessonClient = dynamic<{ lessonId: string }>(
   { ssr: false }
 );
 
-export default function LessonPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function LessonPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-xl">Loading...</div>}>
       <LessonClient lessonId={id} />
