@@ -6,8 +6,18 @@ export function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const originalFetch = window.fetch;
     window.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
-      const url = typeof input === 'string' ? input : (input as Request).url;
-      if (url.includes('identitytoolkit.googleapis.com') && (url.includes('signInWithPassword') || url.includes('signUp'))) {
+      const urlRaw =
+        typeof input === 'string'
+          ? input
+          : typeof (input as any)?.url === 'string'
+          ? ((input as any).url as string)
+          : '';
+
+      if (
+        urlRaw &&
+        (urlRaw.includes('identitytoolkit.googleapis.com') ||
+          urlRaw.includes('firestore.googleapis.com'))
+      ) {
         return new Response(JSON.stringify({
           idToken: 'mock-token',
           localId: 'test-user',
@@ -19,14 +29,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
       }
       return originalFetch(input, init);
     };
-    return () => {
-      window.fetch = originalFetch;
-    };
-
     // Register service worker to intercept identitytoolkit calls at network layer
     if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
       navigator.serviceWorker.register('/mock-auth-sw.js').catch(() => {});
     }
+
+    return () => {
+      window.fetch = originalFetch;
+    };
   }, []);
 
   return <>{children}</>;

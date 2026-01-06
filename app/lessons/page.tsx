@@ -75,6 +75,10 @@ export default function LessonsPage() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">Lessons</h1>
+        <div className="mb-6 bg-purple-50 border border-purple-200 rounded-lg p-4 text-purple-800">
+          <p className="font-semibold">Upgrade to Premium Access</p>
+          <p className="text-sm">Unlock all pro lessons with a premium plan.</p>
+        </div>
         {lessons.length === 0 ? (
           <div className="bg-white rounded-lg shadow p-8 text-center">
             <p className="text-gray-600">No lessons available yet.</p>

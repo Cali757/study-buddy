@@ -5,21 +5,25 @@ import { setUserPro } from '@/lib/firestore';
 const stripeSecret = process.env.STRIPE_SECRET_KEY || '';
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || '';
 const stripe = stripeSecret
-  ? new Stripe(stripeSecret, { apiVersion: '2023-10-16' })
+  ? new Stripe(stripeSecret, { apiVersion: '2024-06-20' })
   : null;
 
 export async function POST(request: NextRequest) {
   if (!stripe || !webhookSecret) {
+    console.error('[STRIPE WEBHOOK] Configuration error: Missing Stripe secret or webhook secret');
     return NextResponse.json(
       { error: 'Stripe not configured' },
       { status: 500 }
     );
   }
+  
+  console.log('[STRIPE WEBHOOK] Received webhook request');
 
   const body = await request.text();
   const signature = request.headers.get('stripe-signature');
 
   if (!signature) {
+    console.error('[STRIPE WEBHOOK] Error: No signature provided in request headers');
     return NextResponse.json(
       { error: 'No signature provided' },
       { status: 400 }
@@ -30,8 +34,9 @@ export async function POST(request: NextRequest) {
 
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
+    console.log(`[STRIPE WEBHOOK] Successfully verified webhook signature for event type: ${event.type}`);
   } catch (err: any) {
-    console.error('Webhook signature verification failed:', err.message);
+    console.error('[STRIPE WEBHOOK] FAILURE: Webhook signature verification failed:', err.message);
     return NextResponse.json(
       { error: `Webhook Error: ${err.message}` },
       { status: 400 }
@@ -59,7 +64,7 @@ export async function POST(request: NextRequest) {
             subscription.id
           );
 
-          console.log(`User ${userId} upgraded to Pro`);
+          console.log(`[STRIPE WEBHOOK] SUCCESS: User ${userId} upgraded to Pro (subscription: ${subscription.id})`);
         }
         break;
       }
@@ -83,7 +88,7 @@ export async function POST(request: NextRequest) {
             subscription.id
           );
 
-          console.log(`Subscription ${subscription.id} updated: ${subscription.status} for user ${userId}`);
+          console.log(`[STRIPE WEBHOOK] SUCCESS: Subscription ${subscription.id} updated to status: ${subscription.status} for user ${userId}`);
         }
         break;
       }
@@ -99,18 +104,20 @@ export async function POST(request: NextRequest) {
         if (userId) {
           // Set user to free plan
           await setUserPro(userId, false, customerId, subscription.id);
-          console.log(`Subscription ${subscription.id} canceled for user ${userId}`);
+          console.log(`[STRIPE WEBHOOK] SUCCESS: Subscription ${subscription.id} canceled for user ${userId}`);
         }
         break;
       }
 
       default:
-        console.log(`Unhandled event type: ${event.type}`);
+        console.log(`[STRIPE WEBHOOK] Unhandled event type: ${event.type}`);
     }
 
+    console.log(`[STRIPE WEBHOOK] SUCCESS: Webhook processed successfully for event ${event.id}`);
     return NextResponse.json({ received: true });
   } catch (error: any) {
-    console.error('Error processing webhook:', error);
+    console.error('[STRIPE WEBHOOK] FAILURE: Error processing webhook:', error.message || error);
+    console.error('[STRIPE WEBHOOK] Stack trace:', error.stack);
     return NextResponse.json(
       { error: 'Webhook processing failed' },
       { status: 500 }

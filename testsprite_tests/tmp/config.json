@@ -1,0 +1,17 @@
+{
+  "status": "init",
+  "executionArgs": {
+    "projectName": "saas-project",
+    "projectPath": "C:\\Users\\pp\\saas-project",
+    "testIds": [],
+    "additionalInstruction": "",
+    "envs": {
+      "API_KEY": "sk-user-R9jNDZTjlqjSn4OcbR1QCFpA--FYzsz1d-nwWCganudJcv1DovcElLkU3-TLEJ0PGDSTFWPE4-71ZF1vw7iNYk8_VgVTNNmpjuH1m3-SoPtWnPlZNhWg8jzPOUld5t474ms"
+    }
+  },
+  "scope": "codebase",
+  "type": "frontend",
+  "localEndpoint": "http://localhost:3001/",
+  "serverPort": 64942,
+  "proxy": "http://08bbb6a3-35e8-49ff-917d-0ce04080b016:0aGppJcyXOmUjxmfGRgh62eOukujV6vi@tun.testsprite.com:8080"
+}

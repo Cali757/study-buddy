@@ -1,0 +1,321 @@
+[
+  {
+    "id": "TC001",
+    "title": "Home Page Load and Navigation",
+    "description": "Verify that the Home Page loads correctly without errors and that navigation links work properly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Home Page at route '/'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page loads without 404 errors"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no console errors exist on page load"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that main UI elements and feature highlights display correctly"
+      },
+      {
+        "type": "action",
+        "description": "Click navigation links to Authentication (/login), Lessons (/lessons), and Dashboard (/dashboard)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify each navigated page loads without error"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Authentication Pages Accessibility",
+    "description": "Verify that the Login and Signup pages load correctly and UI elements render properly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Login Page at route '/login'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page loads without 404 errors"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that login form UI elements (email, password input, submit button) render correctly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no console errors exist on page load"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the Signup Page at route '/signup'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page loads without 404 errors"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that signup form UI elements (email, password input, submit button) render correctly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no console errors exist on page load"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Dashboard Page Access and UI Validation",
+    "description": "Verify the protected Dashboard page loads correctly and displays user information UI elements properly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Dashboard Page at route '/dashboard'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the page loads without 404 errors"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that user information section and dashboard components render correctly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that no console errors appear on page load"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Lessons Listing and Individual Lesson Page Load",
+    "description": "Verify lessons list and individual lesson page render correctly without errors for valid lesson IDs.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to Lessons listing page at route '/lessons'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page loads without 404 errors"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that lessons list UI elements are rendered correctly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no console errors on page load"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to an individual lesson page at route '/lesson/1' (assuming lesson id=1 exists)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page loads without 404 errors"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify individual lesson content renders correctly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no console errors on page load"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to an invalid lesson ID page e.g. '/lesson/invalid-id'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the app handles the invalid route properly (e.g. shows not found or appropriate error UI)"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Quiz Page Access and UI Rendering",
+    "description": "Verify that quiz pages load with correct UI components and handle invalid quiz IDs properly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to quiz page with valid ID at route '/quiz/1'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify quiz page loads without 404 error"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify quiz UI elements such as questions and submit buttons are rendered"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no console errors on page load"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to quiz page with invalid ID at route '/quiz/invalid-id'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the app handles invalid quiz ID gracefully (shows error or not found)"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "User Progress Page Accessibility and UI Validation",
+    "description": "Verify that the user progress page loads properly and displays progress tracking elements.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to user progress page at route '/progress'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page loads without 404 errors"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify progress indicators and charts display correctly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no console errors on page load"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Billing Page Load and UI Elements Verification",
+    "description": "Verify that the billing management page loads correctly and billing UI components render without errors.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to billing page at route '/billing'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page loads with no 404 errors"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify billing details, payment methods, and subscription management UI elements are visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no console errors appear on page load"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "User Settings Page Accessibility and UI Verification",
+    "description": "Verify the settings page loads and all relevant user settings UI elements render correctly.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to settings page at route '/settings'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page loads without 404 error"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that various settings options and input fields are rendered properly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no console errors on page load"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Profile Page Load and UI Elements",
+    "description": "Ensure user profile page loads without errors and all profile related UI is displayed accurately.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to profile page at route '/profile'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page does not return 404 errors"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that profile information fields and related UI elements are rendered correctly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no console errors on page load"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Navigation Between All Major Routes",
+    "description": "Validate navigation works properly between all major application pages without page load errors.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "From Home Page '/', navigate to each route in sequence: /login, /signup, /dashboard, /lessons, /lesson/1, /quiz/1, /progress, /billing, /settings, /profile"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that each page loads without 404 errors and UI elements render correctly"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure no console errors are logged on any page load"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Page Load Without Console Errors",
+    "description": "Verify across all tested routes that no console errors or warnings are present on page load.",
+    "category": "error handling",
+    "priority": "High",
+  "steps": [
+      {
+        "type": "action",
+        "description": "Visit each route: '/', '/login', '/signup', '/dashboard', '/lessons', '/lesson/1', '/quiz/1', '/progress', '/billing', '/settings', '/profile'"
+      },
+      {
+        "type": "assertion",
+        "description": "Check browser console and confirm that there are no JavaScript errors or warnings on page load"
+      }
+    ]
+  }
+]

@@ -3,7 +3,7 @@
 export interface Lesson {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   order: number;
   isPro: boolean;
   courseId: string;
@@ -18,6 +18,7 @@ export interface Quiz {
   id: string;
   lessonId: string;
   title: string;
+  questions?: Question[];
 }
 
 export interface Question {
