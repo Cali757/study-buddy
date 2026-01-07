@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn, signUp } from '@/lib/auth';
 import Link from 'next/link';
-import { StitchShell } from '@/components/StitchShell';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -64,8 +63,8 @@ export default function LoginPage() {
   };
 
   return (
-    <StitchShell title="Login">
-      <div className="max-w-md w-full mx-auto space-y-8 p-8 bg-white rounded-lg shadow-sm border border-slate-200">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
         <div>
           <h2 className="text-center text-3xl font-bold text-gray-900">Sign in to your account</h2>
           <p className="mt-2 text-center text-sm text-gray-600">Pro lessons are unlocked for premium users only</p>
@@ -127,6 +126,6 @@ export default function LoginPage() {
           </div>
         </form>
       </div>
-    </StitchShell>
+    </div>
   );
 }
