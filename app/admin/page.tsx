@@ -6,6 +6,7 @@ import { onAuthChange } from '@/lib/auth';
 import { getLessons, updateLessonMeta } from '@/lib/firestore';
 import { Lesson } from '@/lib/types';
 import { useRouter } from 'next/navigation';
+import { StitchShell } from '@/components/StitchShell';
 
 export default function AdminPage() {
   const [lessons, setLessons] = useState<Lesson[]>([]);
@@ -103,53 +104,38 @@ export default function AdminPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-xl">Loading...</div>
-      </div>
+      <StitchShell title="Admin">
+        <div className="min-h-[40vh] flex items-center justify-center text-xl">Loading...</div>
+      </StitchShell>
     );
   }
 
   if (!isAdmin) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="bg-white shadow rounded-lg p-8 text-center space-y-4">
-          <h1 className="text-2xl font-bold text-gray-900">Admin access required</h1>
-          <p className="text-gray-600">Please sign in with an admin account.</p>
-          <Link href="/login" className="text-blue-600 hover:text-blue-700 font-semibold">
-            Go to Login
-          </Link>
+      <StitchShell title="Admin">
+        <div className="min-h-[40vh] flex items-center justify-center">
+          <div className="bg-white shadow-sm rounded-lg border border-slate-200 p-8 text-center space-y-4">
+            <h1 className="text-2xl font-bold text-gray-900">Admin access required</h1>
+            <p className="text-gray-600">Please sign in with an admin account.</p>
+            <Link href="/login" className="text-blue-600 hover:text-blue-700 font-semibold">
+              Go to Login
+            </Link>
+          </div>
         </div>
-      </div>
+      </StitchShell>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-blue-600">
-                Admin
-              </Link>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link href="/lessons" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">
-                Lessons
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <StitchShell title="Admin">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Lesson Controls</h1>
         {message && (
           <div className="mb-4 bg-blue-50 border border-blue-200 text-blue-800 rounded p-3">
             {message}
           </div>
         )}
-        <div className="bg-white shadow rounded-lg divide-y">
+        <div className="bg-white shadow-sm rounded-lg border border-slate-200 divide-y">
           {lessons.map((lesson) => (
             <div key={lesson.id} className="p-4 flex items-center justify-between">
               <div>
@@ -199,8 +185,8 @@ export default function AdminPage() {
             </div>
           ))}
         </div>
-      </main>
-    </div>
+      </div>
+    </StitchShell>
   );
 }
 
