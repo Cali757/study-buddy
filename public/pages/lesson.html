@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy Lesson View</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101623",
+                        "surface-dark": "#1a2436",
+                        "surface-darker": "#151c2b",
+                        "border-dark": "#2a3750",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "sans": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark mode feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101623; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3750; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0d59f2; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-border-dark bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md">
+<div class="px-6 md:px-10 py-3 flex items-center justify-between gap-6">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Study Buddy</h2>
+</div>
+<!-- Search Bar -->
+<div class="hidden md:flex relative group w-64">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border-none rounded-lg leading-5 bg-gray-200 dark:bg-surface-dark text-slate-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm" placeholder="Search lessons..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex gap-6">
+<a class="text-sm font-medium text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-primary dark:text-white font-bold" href="#">My Courses</a>
+<a class="text-sm font-medium text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors" href="#">Community</a>
+</nav>
+<div class="h-6 w-px bg-gray-300 dark:bg-border-dark mx-2 hidden lg:block"></div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-surface-dark text-gray-500 dark:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-9 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="User profile avatar portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKhGp5YBfspDl1ukuA2oYuhzdHNfJAxT4FgZU0ys0on0gOaIICzfiaxS_Mb82wO7yx9ys2IsB_TGQlTC4Ho48v67ECAJ999bS4UTwoLME_k4NgZIjCx3bUIOddZOoZ_kkWiOr6wmk1Xg7sUEggJHekpn35sPJWLoumrdl6tkszsJdiTa48rbk_wa8hbNwiehkhg9vTvb8Dq_N1V9RRgHyRVeUncCsWyD-aTMqTEj3O3pQvOj4AGFAziVl31VlzYjMYv9zXlpGhzPJ1');">
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Layout Grid -->
+<main class="flex-1 w-full max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
+<!-- Left Sidebar: Course Navigation (Hidden on small screens) -->
+<aside class="hidden lg:block lg:col-span-3 xl:col-span-2 sticky top-[88px] h-[calc(100vh-120px)] overflow-y-auto pr-2">
+<div class="bg-white dark:bg-surface-darker rounded-xl p-5 border border-gray-200 dark:border-border-dark flex flex-col gap-6 h-full shadow-sm">
+<div>
+<h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Course Progress</h3>
+<div class="flex flex-col gap-2 mb-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-gray-600 dark:text-gray-300">45% Complete</span>
+<span class="text-primary">Module 4/10</span>
+</div>
+<div class="h-1.5 w-full bg-gray-200 dark:bg-border-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[45%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 overflow-y-auto flex-1">
+<div class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-gray-50 dark:hover:bg-surface-dark/50 cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span class="text-sm font-medium line-through decoration-gray-500">Intro to Logistics</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-gray-50 dark:hover:bg-surface-dark/50 cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span class="text-sm font-medium line-through decoration-gray-500">Safety Basics</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-gray-50 dark:hover:bg-surface-dark/50 cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span class="text-sm font-medium line-through decoration-gray-500">Route Planning</span>
+</div>
+<!-- Active Item -->
+<div class="flex items-center gap-3 p-3 rounded-lg bg-primary/10 border-l-4 border-primary text-primary cursor-pointer">
+<span class="material-symbols-outlined text-[20px] fill-current">play_circle</span>
+<span class="text-sm font-bold">Freight Broker Negotiation</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-surface-dark/50 cursor-pointer opacity-60">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span class="text-sm font-medium">Contract Types</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-surface-dark/50 cursor-pointer opacity-60">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span class="text-sm font-medium">Compliance &amp; Law</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Center: Lesson Content -->
+<section class="col-span-1 lg:col-span-6 xl:col-span-7 flex flex-col gap-6">
+<!-- Lesson Header Card -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-6 md:p-8 border border-gray-200 dark:border-border-dark shadow-sm">
+<div class="flex flex-wrap items-center gap-3 mb-4">
+<span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wide">Module 4</span>
+<span class="flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 dark:bg-border-dark text-gray-600 dark:text-gray-300 text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">signal_cellular_alt</span> Intermediate
+                    </span>
+<span class="flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 dark:bg-border-dark text-gray-600 dark:text-gray-300 text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 15 min read
+                    </span>
+</div>
+<h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+                    Mastering Freight Broker Negotiations
+                </h1>
+<p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl">
+                    Learn the art of negotiation in the spot market versus contract rates. Understand the leverage points for brokers and carriers.
+                </p>
+</div>
+<!-- Content Body -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden shadow-sm">
+<!-- Main image / Diagram -->
+<div class="w-full h-64 md:h-80 bg-gray-100 dark:bg-surface-darker relative border-b border-gray-200 dark:border-border-dark group">
+<div class="absolute inset-0 bg-cover bg-center opacity-90 transition-opacity group-hover:opacity-100" data-alt="Freight shipping containers stacked at a port" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDr2Cs1_rcr2WTXIFTmk9I22B8eHFat6Bah36Swmt4DeOSZVNOdaS5MgHojTFKKD69zoyguxatkEuGqLZG6iXzy7mGuDeFGF6bytU8RE2W_ClmbsPSbyBNyftTQL_jANwiL7UbHvuPg0_qVZvwotwP3NjsVuDaUZViDx7Txhkp5by1jxqLZP2HqNVvfwWk9iXV3n9EIv9lmO8zBHtO_NDxvCzrLO4BWpz0bkAZt4Dq1MdzELRApn1m4pxPRYD8pHAogi0HtxzAsdv2z');">
+</div>
+<div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">zoom_in</span> Click to expand diagram
+                    </div>
+</div>
+<div class="p-6 md:p-10 space-y-8">
+<!-- Text Block 1 -->
+<div class="prose dark:prose-invert max-w-none">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white text-xs">1</span>
+                            Understanding Market Rates
+                        </h3>
+<p class="text-gray-600 dark:text-gray-300 leading-7">
+                            Before entering a negotiation, it is crucial to understand the difference between <strong class="text-primary">Spot Market Rates</strong> and <strong class="text-primary">Contract Rates</strong>. Spot rates are driven by immediate supply and demand conditions—think of it as the 'right now' price. Contract rates are pre-negotiated prices for a set volume over a specific period, offering stability but less flexibility.
+                        </p>
+</div>
+<!-- Highlight Box -->
+<div class="bg-blue-50 dark:bg-primary/5 border-l-4 border-primary p-5 rounded-r-lg">
+<h4 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">lightbulb</span> Pro Tip
+                        </h4>
+<p class="text-gray-700 dark:text-gray-200 italic">
+                            "Always verify carrier insurance before finalizing a rate. A great rate is useless if the carrier isn't compliant."
+                        </p>
+</div>
+<!-- Diagram/Image 2 -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-surface-darker p-4 flex flex-col items-center">
+<div class="w-full h-40 bg-contain bg-center bg-no-repeat mb-3" data-alt="Flowchart showing broker negotiation workflow steps" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB82LHb-jI-HAmXLCDfzdwNMztr_4sNqLTJn7bCcHO0rMKUgX57ARGnERKKdqZzEWxMtSVXaDRLVto6sJGrbC_jjzwAlI767eYVIg33pheYymU1nYQ7Z2xr6YPedfvHacVVzxvwJMkLFl0xCUpHfBd-ccPIROBbmXh8uGfXLO8qNJ3kNt3_2P7ciW9DuIYLP8zEkt-VzPiWruverdzE7I8Xwa86-o7RtK7whv7pcliNhgNco_B7gz0NBxR5_EH8Qcikkx5QsnlO6AZk');"></div>
+<span class="text-xs font-medium text-gray-500 uppercase tracking-widest">Broker Workflow</span>
+</div>
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-surface-darker p-4 flex flex-col justify-center">
+<h5 class="font-bold text-gray-900 dark:text-white mb-2">Key Leverage Points</h5>
+<ul class="space-y-2">
+<li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined text-green-500 text-[18px]">check</span>
+                                    Return load availability
+                                </li>
+<li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined text-green-500 text-[18px]">check</span>
+                                    Quick pay options
+                                </li>
+<li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined text-green-500 text-[18px]">check</span>
+                                    Consistent lane volume
+                                </li>
+</ul>
+</div>
+</div>
+<!-- Text Block 2 -->
+<div class="prose dark:prose-invert max-w-none">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white text-xs">2</span>
+                            The Negotiation Script
+                        </h3>
+<p class="text-gray-600 dark:text-gray-300 leading-7 mb-4">
+                            Effective brokers don't just ask "How much?". They build a conversation around value. Start by asking the carrier about their preferred lanes and current location. This establishes a relationship before talking numbers.
+                        </p>
+<p class="text-gray-600 dark:text-gray-300 leading-7">
+                            When countering an offer, use data. "The market average on this lane for the last 7 days is $2.40/mile. We can offer $2.45 because we pay in 2 days."
+                        </p>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark shadow-sm sticky bottom-6 z-30">
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-surface-darker transition-colors font-medium w-full sm:w-auto justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+                    Previous Topic
+                </button>
+<div class="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-end">
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-bold">
+<span class="material-symbols-outlined">quiz</span>
+                        Take Quiz
+                    </button>
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-primary text-white hover:bg-blue-600 transition-colors font-bold shadow-lg shadow-blue-500/20">
+                        Next Topic
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Right Sidebar: Tools & Notes -->
+<aside class="col-span-1 lg:col-span-3 xl:col-span-3 flex flex-col gap-6 sticky top-[88px] h-fit">
+<!-- AI Summary Widget -->
+<div class="bg-gradient-to-br from-surface-dark to-surface-darker rounded-xl p-[1px] relative group overflow-hidden shadow-lg">
+<!-- Glowing border effect -->
+<div class="absolute inset-0 bg-gradient-to-r from-primary/50 to-purple-500/50 opacity-50 blur-sm group-hover:opacity-75 transition-opacity"></div>
+<div class="relative bg-white dark:bg-surface-darker rounded-[11px] p-5 h-full flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-border-dark">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span>AI Summary</span>
+</div>
+<button class="text-xs bg-gray-100 dark:bg-surface-dark px-2 py-1 rounded text-gray-500 hover:text-primary transition-colors">Refresh</button>
+</div>
+<div class="space-y-3">
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+<strong class="text-gray-900 dark:text-white">Key Takeaway:</strong> Negotiation is about leverage, not just price. Spot rates fluctuate with demand, while contracts offer stability.
+                        </p>
+<ul class="space-y-2 mt-2">
+<li class="flex gap-2 text-xs text-gray-500 dark:text-gray-400 items-start">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></span>
+                                Verify insurance before booking.
+                            </li>
+<li class="flex gap-2 text-xs text-gray-500 dark:text-gray-400 items-start">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></span>
+                                Use market data to counter-offer.
+                            </li>
+<li class="flex gap-2 text-xs text-gray-500 dark:text-gray-400 items-start">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></span>
+                                Build relationships for long-term value.
+                            </li>
+</ul>
+</div>
+<button class="w-full mt-2 py-2 text-xs font-bold text-center text-primary border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors">
+                        Expand Summary
+                    </button>
+</div>
+</div>
+<!-- Notes Section -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark shadow-sm flex flex-col h-[400px]">
+<div class="p-4 border-b border-gray-200 dark:border-border-dark flex justify-between items-center bg-gray-50 dark:bg-surface-darker rounded-t-xl">
+<h3 class="font-bold text-gray-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">edit_note</span>
+                        My Notes
+                    </h3>
+<div class="flex gap-1">
+<button class="p-1 hover:bg-gray-200 dark:hover:bg-surface-dark rounded text-gray-400">
+<span class="material-symbols-outlined text-[18px]">format_bold</span>
+</button>
+<button class="p-1 hover:bg-gray-200 dark:hover:bg-surface-dark rounded text-gray-400">
+<span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+</button>
+</div>
+</div>
+<div class="flex-1 p-4">
+<textarea class="w-full h-full bg-transparent border-none resize-none focus:ring-0 text-sm text-gray-700 dark:text-gray-300 placeholder-gray-400 leading-relaxed" placeholder="Type your notes here... e.g., Remember to ask about detention pay during negotiations."></textarea>
+</div>
+<div class="p-3 border-t border-gray-200 dark:border-border-dark flex justify-between items-center text-xs text-gray-400">
+<span>Saved 2m ago</span>
+<button class="text-primary hover:underline">Export Notes</button>
+</div>
+</div>
+<!-- Resource Links -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark p-5 shadow-sm">
+<h3 class="font-bold text-gray-900 dark:text-white text-sm mb-3">Lesson Resources</h3>
+<div class="flex flex-col gap-3">
+<a class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-surface-darker transition-colors group" href="#">
+<div class="size-8 rounded bg-red-100 dark:bg-red-900/20 text-red-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-primary">Rate Sheet Template</p>
+<p class="text-xs text-gray-500">PDF • 2.4 MB</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[18px]">download</span>
+</a>
+<a class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-surface-darker transition-colors group" href="#">
+<div class="size-8 rounded bg-green-100 dark:bg-green-900/20 text-green-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-primary">Negotiation Script</p>
+<p class="text-xs text-gray-500">DOCX • 1.1 MB</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[18px]">download</span>
+</a>
+</div>
+</div>
+</aside>
+</main>
+<!-- Background Pattern/Effect -->
+<div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+<div class="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute top-[40%] -left-[10%] w-[30%] h-[30%] rounded-full bg-purple-500/5 blur-[100px]"></div>
+</div>
+</body></html>

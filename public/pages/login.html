@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy - Access Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scan': 'scan 3s linear infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '100%': { backgroundPosition: '100% 100%' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scanline Effect for the background */
+        .bg-grid-pattern {
+            background-image: linear-gradient(rgba(13, 89, 242, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(13, 89, 242, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        /* Glassmorphism utility specific for this intense dark mode */
+        .glass-panel {
+            background: rgba(16, 22, 34, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(13, 89, 242, 0.3);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        /* Glitch text effect simulation */
+        .glitch-text {
+            text-shadow: 2px 0 rgba(255, 0, 0, 0.5), -2px 0 rgba(0, 255, 255, 0.5);
+        }
+
+        /* Input autofill fix for dark mode */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px #0a0f18 inset !important;
+            -webkit-text-fill-color: white !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display overflow-hidden selection:bg-primary selection:text-white">
+<!-- Background Layer -->
+<div class="fixed inset-0 z-0">
+<!-- Map Background Image -->
+<div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-screen" data-alt="Digital world map network with glowing connections" data-location="Global Data Network" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDhsGtY21RONrXecXtiEC-k0qhEHnO5QUkp2O4TBctrdrFakXTK91kuR4LsrKmBw0nETUVxgDb4TOdgI7dSWsR3SGw9mpFvekVJ8WUHhxkKEcN4eWTSzvxHFJSAle_NVakTWhXj-DvD88qWvBAZp4OlkxN0hYJ_GhdlBs-frp3PuyaK6avGOR2NY-vzQFcWuuB_hZlMoLgJm2Du-ZvaWoJFo8WQr5pU5WPE9zSKOvP0sq6nKjv-7GHdhjI7jhCqBGw-nA1oORgtTLg-');">
+</div>
+<!-- Grid Overlay -->
+<div class="absolute inset-0 bg-grid-pattern z-10 pointer-events-none"></div>
+<!-- Vignette -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#101623] via-[#101623]/80 to-[#101623]/40 z-20"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#101623] via-transparent to-[#101623] z-20"></div>
+</div>
+<!-- Main Content -->
+<div class="relative z-30 flex min-h-screen flex-col items-center justify-center p-4">
+<!-- Login Card -->
+<div class="glass-panel w-full max-w-[520px] rounded-xl relative overflow-hidden group">
+<!-- Scanning Line Animation (Decoration) -->
+<div class="absolute top-0 left-0 w-full h-1 bg-primary/50 shadow-[0_0_15px_rgba(13,89,242,0.8)] animate-pulse-slow"></div>
+<!-- Card Header -->
+<div class="px-8 pt-10 pb-6 text-center border-b border-white/5 relative">
+<!-- System Status Pill -->
+<div class="absolute top-4 right-4 flex items-center gap-2 bg-black/40 px-3 py-1 rounded border border-primary/20">
+<div class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-[10px] tracking-widest text-primary/80 font-bold uppercase">System Secure</span>
+</div>
+<!-- Logo Icon -->
+<div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10 border border-primary/40 shadow-[0_0_20px_rgba(13,89,242,0.2)]">
+<span class="material-symbols-outlined text-primary text-4xl">hub</span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight text-white mb-2">ACCESS TERMINAL // <span class="text-primary">STUDY BUDDY</span></h2>
+<p class="text-sm font-light tracking-[0.2em] text-gray-400 uppercase">Initialize Session Sequence</p>
+</div>
+<!-- Login Form -->
+<div class="px-8 py-8 space-y-6">
+<!-- Operator ID Input -->
+<div class="space-y-2">
+<label class="flex items-center justify-between text-xs font-bold tracking-widest text-primary/80 uppercase">
+<span>Operator ID</span>
+<span class="material-symbols-outlined text-[14px]">badge</span>
+</label>
+<div class="relative group/input">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-gray-500 group-focus-within/input:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+</div>
+<input class="w-full h-14 bg-[#0a0f18] border border-[#2a3b55] rounded text-white placeholder-gray-600 pl-12 pr-4 focus:ring-1 focus:ring-primary focus:border-primary focus:shadow-[0_0_15px_rgba(13,89,242,0.3)] transition-all outline-none font-mono text-sm" placeholder="ENTER ID OR EMAIL" type="text"/>
+<!-- Corner accents for input -->
+<div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary/50"></div>
+<div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary/50"></div>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<label class="flex items-center justify-between text-xs font-bold tracking-widest text-primary/80 uppercase">
+<span>Access Key</span>
+<span class="material-symbols-outlined text-[14px]">vpn_key</span>
+</label>
+<div class="relative group/input">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-gray-500 group-focus-within/input:text-primary transition-colors">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<input class="w-full h-14 bg-[#0a0f18] border border-[#2a3b55] rounded text-white placeholder-gray-600 pl-12 pr-4 focus:ring-1 focus:ring-primary focus:border-primary focus:shadow-[0_0_15px_rgba(13,89,242,0.3)] transition-all outline-none font-mono text-sm" placeholder="ENTER PASSWORD" type="password"/>
+<!-- Corner accents for input -->
+<div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary/50"></div>
+<div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary/50"></div>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-14 mt-4 bg-primary hover:bg-blue-600 text-white font-bold tracking-[0.15em] uppercase rounded relative overflow-hidden transition-all duration-300 transform hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(13,89,242,0.4)] hover:shadow-[0_4px_30px_rgba(13,89,242,0.6)] flex items-center justify-center gap-3 group/btn">
+<span>Establish Connection</span>
+<span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">login</span>
+<!-- Shiny effect overlay -->
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
+</button>
+<!-- Footer Links -->
+<div class="flex flex-col sm:flex-row items-center justify-between pt-4 text-xs font-medium tracking-wide text-gray-400 gap-4">
+<a class="flex items-center gap-1 hover:text-primary transition-colors group/link" href="#">
+<span class="material-symbols-outlined text-[14px] group-hover/link:animate-pulse">terminal</span>
+<span>RECOVER CREDENTIALS</span>
+</a>
+<a class="flex items-center gap-1 hover:text-primary transition-colors group/link" href="#">
+<span class="material-symbols-outlined text-[14px] group-hover/link:animate-pulse">person_add</span>
+<span>REGISTER NEW UNIT</span>
+</a>
+</div>
+</div>
+<!-- Card Footer Decor -->
+<div class="h-2 w-full bg-[#0a0f18] flex items-center justify-center gap-1">
+<div class="h-1 w-8 bg-primary/20"></div>
+<div class="h-1 w-1 bg-primary/40"></div>
+<div class="h-1 w-1 bg-primary/40"></div>
+<div class="h-1 w-8 bg-primary/20"></div>
+</div>
+</div>
+<!-- Bottom Page Info -->
+<div class="mt-8 text-center opacity-60">
+<p class="text-[10px] uppercase tracking-[0.3em] text-white/40">
+                Encrypted Connection • V2.0.5 • Log Node #4922
+            </p>
+</div>
+</div>
+</body></html>

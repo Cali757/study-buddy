@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy - Master Freight Brokering</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2332",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "sans": ["Space Grotesk", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222f49;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0d59f2;
+        }
+        
+        .glass-panel {
+            background: rgba(16, 22, 35, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #90a4cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden transition-colors duration-300">
+<!-- Top Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-[#101622]/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<!-- Logo -->
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-2xl">local_shipping</span>
+</div>
+<span class="text-xl font-bold tracking-tight">Study Buddy</span>
+</div>
+<!-- Desktop Menu -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#how-it-works">How it Works</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#benefits">Core Benefits</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Login</a>
+<button class="bg-primary hover:bg-blue-600 text-white text-sm font-bold py-2.5 px-6 rounded-full transition-all shadow-[0_0_20px_rgba(13,89,242,0.3)] hover:shadow-[0_0_30px_rgba(13,89,242,0.5)]">
+                        Get Started
+                    </button>
+</div>
+<!-- Mobile Menu Button -->
+<div class="md:hidden">
+<button class="p-2 text-slate-400 hover:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-[#101622]/90 via-[#101622]/70 to-[#101622] z-10"></div>
+<div class="w-full h-full bg-cover bg-center bg-no-repeat" data-alt="Futuristic long exposure of truck lights on a highway at night" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxO-Ig-X4uzHRDcSwbqSThaS7uiqTURYModBw0GXKDjqChnzC4eP9y5GfyHrPEhJbE5hZ8UIedFbuzZDDVMUY9wqAKJphtFEwS2QRyhgS5unjKltD0seUXoq1cs4wfVlZb5m5fbQ1XfkFPIEUsrkx0NyhnzA_GnOByAbR-QImIQHY_G0SS_93ZLpmTkwFKP3LeZiv-6USLeIUStWBzs97nf7fms7S7-QvIG3nd6SWliuzZgVCCTnJmVXePBN1WQbxAxpb9VwrhqX4r');">
+</div>
+</div>
+<div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 backdrop-blur-sm mb-8 animate-fade-in-up">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-xs font-medium text-slate-300 uppercase tracking-wider">AI-Powered Study Companion</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-4xl text-gradient leading-[1.1]">
+                Master Freight Brokering with <span class="text-primary">AI Precision</span>
+</h1>
+<p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
+                Reduce cognitive load. Make studying possible. The intelligent companion for the modern logistics pro, designed to help you pass faster.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+<button class="flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white text-base font-bold h-12 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(13,89,242,0.4)] hover:scale-105">
+<span>Get Started Free</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="flex items-center justify-center gap-2 bg-surface-dark/50 hover:bg-surface-dark border border-slate-700 backdrop-blur-md text-white text-base font-bold h-12 px-8 rounded-full transition-all hover:border-slate-500">
+<span class="material-symbols-outlined text-sm">play_circle</span>
+<span>See How It Works</span>
+</button>
+</div>
+<!-- Stats/Trust Indicators -->
+<div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 border-t border-slate-800 pt-10 w-full max-w-4xl">
+<div class="flex flex-col items-center">
+<span class="text-3xl font-bold text-white">98%</span>
+<span class="text-sm text-slate-400">Pass Rate</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-3xl font-bold text-white">5k+</span>
+<span class="text-sm text-slate-400">Active Students</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-3xl font-bold text-white">24/7</span>
+<span class="text-sm text-slate-400">AI Tutor Access</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-3xl font-bold text-white">100+</span>
+<span class="text-sm text-slate-400">Modules</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Benefits Section -->
+<section class="py-24 relative bg-background-light dark:bg-background-dark" id="benefits">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col gap-4 mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Core Benefits</h2>
+<p class="text-slate-600 dark:text-slate-400 max-w-2xl text-lg">
+                    Designed for the complexities of the freight and logistics industry. We simplify the chaos into structured learning.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="group p-8 rounded-2xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(13,89,242,0.1)]">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">headset_mic</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Dispatch Mastery</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Master the art of dispatching with real-world scenarios. Learn to handle drivers, negotiate rates, and manage timelines under pressure.
+                    </p>
+</div>
+<!-- Card 2 -->
+<div class="group p-8 rounded-2xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(13,89,242,0.1)]">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">analytics</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Freight Optimization</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Optimize brokering workflows using AI-driven insights. Understand market trends, lane analysis, and pricing strategies instantly.
+                    </p>
+</div>
+<!-- Card 3 -->
+<div class="group p-8 rounded-2xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(13,89,242,0.1)]">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">local_shipping</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Fleet Management</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Learn efficient fleet management strategies. From maintenance scheduling to compliance and safety regulations.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="py-24 bg-slate-100 dark:bg-[#0b0f19]" id="how-it-works">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row gap-12 items-start">
+<!-- Text Content -->
+<div class="flex-1 sticky top-32">
+<h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">How It Works</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-md">
+                        A simple 3-step process to elevate your career from novice to logistics expert.
+                    </p>
+<button class="hidden md:flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+<span>Start your assessment</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Steps Grid -->
+<div class="flex-1 flex flex-col gap-12">
+<!-- Step 1 -->
+<div class="flex flex-col gap-4 group">
+<div class="aspect-video w-full rounded-2xl bg-slate-800 overflow-hidden relative shadow-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+<div class="absolute bottom-4 left-4 z-20 flex items-center gap-2">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-bold text-sm">1</span>
+<span class="text-white font-medium">Initial Assessment</span>
+</div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Person working on laptop taking a digital quiz" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKQYHFTkTBovV63IRupwNOqwkiaItil4tmx9gZ5orVQcaxXbbvw_QffQ08imhPj8XjEGLi8fyd7Bf1zzo-xT0mYMOZ8Vlbj_HgZgHSYtoe3lR6kvdqe1XL6gpgrcvdOeGiLDFwtwkM86a_fB_ARwIu6r_7V3kc-mWc5y7DoyMFyKVDtSVBkDyEMnKcDz6UgNSi_GwUgQkS6ISFK7Av2dXXhV47Y3-WKr9wnX4AsaJjuhVETQLEorR9X9zJksJDJiRcaqIZjb2G7srU');">
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Assess Knowledge</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Take a comprehensive initial assessment to identify your current knowledge gaps and strengths.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col gap-4 group">
+<div class="aspect-video w-full rounded-2xl bg-slate-800 overflow-hidden relative shadow-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+<div class="absolute bottom-4 left-4 z-20 flex items-center gap-2">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-bold text-sm">2</span>
+<span class="text-white font-medium">AI Personalized Plan</span>
+</div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Abstract digital network visualization representing AI planning" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDx-YrDA3yUOSrhUHKZ-Y2YLtx5l5XYtPjsCH2Qpg-0DUn5rSg6JLWUR1j-8ImY_LYmzDruAc08njZWykfVamfwbIL7ny4luOxYdsquziDPwajKhFM1ueUWmkfIexQhuMppU8SLP1ctgSyOx8jqLI7_RUlfjekQu7F-0Pxrv5lvikPPihPwj1DY9eXOI-3l7vJRAlc2KUwbDRnDDqdLr5bxKFcFazxN27B5ZH1Lj4AuF6Zd77zGo1pCPHLkWO2LZ5EphCSBRExYq1dx');">
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Receive Custom Plan</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Our AI generates a custom study path tailored specifically to your weak points and career goals.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col gap-4 group">
+<div class="aspect-video w-full rounded-2xl bg-slate-800 overflow-hidden relative shadow-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+<div class="absolute bottom-4 left-4 z-20 flex items-center gap-2">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-bold text-sm">3</span>
+<span class="text-white font-medium">Master the Road</span>
+</div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Modern semi-truck driving on a highway at sunset" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBUigdDf2GejQpJkJByhjhb8T6VI4WuJmcWnyCsdHRi0fLIsfeQAU5TcPLeBsQg1nLjt0KLENbyhTDn4T_vR7--aOMDz92_UeNj9YXZ-b0M5e_pJCJD6ZvHwq5SziqeFPrq_bckjkHjdkqXJFagwIBEgtE4yeCsopni4wpMEuSNAbtefTYM3SmuBpz3NGeemzGEGLlqa5zIYRL9t7IdweohVbPdID_9h4JWZpnkP5xa53M6AsdDTxDcvycXk-6QNBbBXg17IihBzzU9');">
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Apply &amp; Excel</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Apply your knowledge to real logistics challenges and track your progress as you master the industry.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/10 dark:bg-primary/5"></div>
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-[100px]"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-400/10 rounded-full blur-[100px]"></div>
+<div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+<h2 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Ready to modernize your skills?</h2>
+<p class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto">
+                Join thousands of professionals mastering the logistics industry today. Stop guessing, start learning with data-driven precision.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<button class="bg-primary hover:bg-blue-600 text-white text-lg font-bold py-4 px-10 rounded-full transition-all shadow-lg hover:shadow-primary/50 hover:-translate-y-1 w-full sm:w-auto">
+                    Get Started Now
+                </button>
+<button class="text-slate-900 dark:text-white font-medium py-4 px-6 hover:text-primary transition-colors">
+                    View Pricing Plans
+                </button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-white dark:bg-[#0a0e17] border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+</div>
+<span class="text-lg font-bold text-slate-900 dark:text-white">Study Buddy</span>
+</div>
+<p class="text-slate-500 text-sm leading-relaxed">
+                        The intelligent study companion for freight brokering, dispatching, and trucking professionals.
+                    </p>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Platform</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">How it Works</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">For Enterprise</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Success Stories</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Resources</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Industry Reports</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Freight Glossary</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Legal</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-500 text-sm">© 2023 Study Buddy Inc. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">
+<span class="sr-only">Twitter</span>
+<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">
+<span class="sr-only">LinkedIn</span>
+<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

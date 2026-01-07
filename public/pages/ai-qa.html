@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy AI - Chat</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #222f49 1px, transparent 1px), linear-gradient(to bottom, #222f49 1px, transparent 1px)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222f49; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155; 
+        }
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white overflow-hidden h-screen flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-[#101623] border-r border-[#222f49] flex-col hidden md:flex shrink-0">
+<div class="p-6 flex flex-col gap-1">
+<h1 class="text-white text-xl font-bold tracking-tight">Study Buddy</h1>
+<p class="text-[#90a4cb] text-xs font-normal">AI Companion</p>
+</div>
+<nav class="flex-1 px-4 flex flex-col gap-2 overflow-y-auto">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#222f49]/50 text-white cursor-pointer hover:bg-[#222f49] transition-colors border-l-2 border-primary">
+<span class="material-symbols-outlined text-primary fill">school</span>
+<p class="text-sm font-medium">Lessons</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#90a4cb] hover:bg-[#222f49] hover:text-white cursor-pointer transition-colors border-l-2 border-transparent">
+<span class="material-symbols-outlined">assignment</span>
+<p class="text-sm font-medium">Quizzes</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#90a4cb] hover:bg-[#222f49] hover:text-white cursor-pointer transition-colors border-l-2 border-transparent">
+<span class="material-symbols-outlined">trending_up</span>
+<p class="text-sm font-medium">Progress</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#90a4cb] hover:bg-[#222f49] hover:text-white cursor-pointer transition-colors border-l-2 border-transparent">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</div>
+</nav>
+<div class="p-4 border-t border-[#222f49]">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#1e293b]">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_zrQMwMfTtiDAGZuzPjw8dp7sK2YAyrUe2RLUFd8UFbR1xkz4P2RBFlZi8axr12-4kwzVxNr10QYYjWKGKHmrPEq7pQ7y2qMFXTMmhajr2OfEMujERK6MV9SDDWYVSCjRy3QSROZ3C3xKZRMioZ-ubeBuHYiqTBiSrzSIaeRldnIzG3OZNM8yHwwVMAumInJZLX-k0aRxn6-tWnUoAX1ymacoEQ1GOHqvOdoMidJ1KgEAuiOE3yOLLm7habDbIVcaLh4yijlBY9Q2");'></div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-sm font-medium text-white truncate">Alex Driver</p>
+<p class="text-xs text-[#90a4cb] truncate">Pro Plan</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col min-w-0 bg-background-dark relative">
+<!-- Background Pattern -->
+<div class="absolute inset-0 z-0 opacity-5 pointer-events-none" style="background-size: 40px 40px; background-image: radial-gradient(circle, #3b82f6 1px, transparent 1px);"></div>
+<!-- Header -->
+<header class="h-16 border-b border-[#222f49] flex items-center justify-between px-6 bg-[#101623]/80 backdrop-blur-md z-20 shrink-0">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-[#90a4cb]">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center gap-2 text-white">
+<div class="size-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined fill">local_shipping</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight hidden sm:block">Freight Brokering Basics</h2>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-[#222f49] rounded-full text-xs font-medium text-[#90a4cb]">
+<span class="size-2 rounded-full bg-green-500 animate-pulse"></span>
+                    Online
+                </div>
+<button class="relative text-[#90a4cb] hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-red-500 rounded-full border-2 border-[#101623]"></span>
+</button>
+</div>
+</header>
+<!-- Lesson Context Bar -->
+<div class="bg-[#161e2e] border-b border-[#222f49] px-6 py-3 flex flex-wrap justify-between items-center gap-3 z-10 shrink-0">
+<div>
+<p class="text-[#90a4cb] text-xs font-medium uppercase tracking-wider">Current Lesson</p>
+<p class="text-white text-sm font-semibold">Topic: Introduction to Load Boards &amp; Rate Confirmations</p>
+</div>
+<button class="text-xs font-medium text-primary hover:text-primary/80 flex items-center gap-1 transition-colors">
+                View Lesson Materials <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Chat Area -->
+<main class="flex-1 overflow-y-auto p-4 sm:p-6 flex flex-col gap-6 scroll-smooth z-10">
+<!-- Date Divider -->
+<div class="flex justify-center">
+<span class="text-xs font-medium text-[#475569] bg-[#1e293b] px-3 py-1 rounded-full">Today, 10:23 AM</span>
+</div>
+<!-- AI Message 1 (Intro) -->
+<div class="flex gap-4 max-w-3xl">
+<div class="bg-gradient-to-br from-primary to-blue-600 rounded-full size-10 shrink-0 flex items-center justify-center shadow-lg shadow-blue-900/20">
+<span class="material-symbols-outlined text-white text-[20px]">smart_toy</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-baseline gap-2">
+<span class="text-sm font-semibold text-white">Study Buddy AI</span>
+<span class="text-xs text-[#64748b]">10:23 AM</span>
+</div>
+<div class="bg-[#1e293b] p-4 rounded-r-xl rounded-bl-xl border border-[#222f49] text-gray-200 leading-relaxed shadow-sm">
+<p>Hello! I'm ready to answer your questions about today's lesson. Ask me anything about <span class="text-primary font-medium">bills of lading</span> or <span class="text-primary font-medium">rate confirmations</span>.</p>
+</div>
+</div>
+</div>
+<!-- User Message 1 -->
+<div class="flex gap-4 flex-row-reverse max-w-3xl self-end">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0 border border-[#222f49]" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgXfYe6m0QX7_pKPDrIxZzRddlSyYBBB61i-1UJ_atxPLhWqK7c79EXZ2Bsodj6miRJRActPOypdN35UvAdnuARFZ_zGKd-we0D3GE9Eosi-3nqrOR25lTumqwpE-Wh2dJakVmrtTeATd16lcXnZFB_lGyNwY_4vVKP6Kk9o_Yw4_NloMmjVSyi4eSLmoB_W0yfiauscFhf88xGdkskb0Q6IdgA8gI2Mt-g5BUy83d9_Mr2EYAEEBL2nyOTDgqyFiTN3v0S5UEWRuP");'></div>
+<div class="flex flex-col gap-2 items-end">
+<div class="flex items-baseline gap-2">
+<span class="text-xs text-[#64748b]">10:25 AM</span>
+<span class="text-sm font-semibold text-white">You</span>
+</div>
+<div class="bg-primary p-4 rounded-l-xl rounded-br-xl text-white leading-relaxed shadow-lg shadow-blue-900/10">
+<p>What is the main difference between a shipper and a carrier in this context?</p>
+</div>
+</div>
+</div>
+<!-- AI Message 2 (Response) -->
+<div class="flex gap-4 max-w-3xl">
+<div class="bg-gradient-to-br from-primary to-blue-600 rounded-full size-10 shrink-0 flex items-center justify-center shadow-lg shadow-blue-900/20">
+<span class="material-symbols-outlined text-white text-[20px]">smart_toy</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-baseline gap-2">
+<span class="text-sm font-semibold text-white">Study Buddy AI</span>
+<span class="text-xs text-[#64748b]">10:25 AM</span>
+</div>
+<div class="bg-[#1e293b] p-5 rounded-r-xl rounded-bl-xl border border-[#222f49] text-gray-200 leading-relaxed shadow-sm group">
+<p class="mb-3">Great question! Here is the breakdown:</p>
+<ul class="list-disc pl-5 space-y-2 mb-3 marker:text-primary">
+<li><strong class="text-white">Shipper:</strong> The entity (manufacturer or distributor) that owns the goods and needs them moved. They initiate the request.</li>
+<li><strong class="text-white">Carrier:</strong> The trucking company or owner-operator that physically transports the goods from point A to point B.</li>
+</ul>
+<p>In freight brokering, you act as the middleman connecting these two parties.</p>
+<!-- Action Tools -->
+<div class="mt-4 pt-3 border-t border-[#334155]/50 flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex items-center gap-1.5 text-xs font-medium text-[#90a4cb] hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[16px]">content_copy</span> Copy
+                            </button>
+<button class="flex items-center gap-1.5 text-xs font-medium text-[#90a4cb] hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[16px]">bookmark</span> Save to Notes
+                            </button>
+<button class="flex items-center gap-1.5 text-xs font-medium text-[#90a4cb] hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span> Helpful
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- User Message 2 -->
+<div class="flex gap-4 flex-row-reverse max-w-3xl self-end">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0 border border-[#222f49]" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLoGmYEmWZ_ACDNTm2HTUKAixJrVo3r4Hidre7SRoeHE8vkzIDsSsGS1B5iDDyYGphGT3faKHOMOg28HFV8Zcqwyk6IKqW3gWCRH2fKlHWCPOrMaVoNOcznXJScKCTsVb9MTYjafRl_DfgAsAlcby3rckzJhULZDcTrjMQn0xr8io_ULPrCIFBIQF2spHd_t0YTVWTCuFhWhF50vqivqhvn9nSE9Hn-Ko3bnVKRRbQYiOBBdijdI60pdJbJfk9HVsi9kymT53SMN7S");'></div>
+<div class="flex flex-col gap-2 items-end">
+<div class="flex items-baseline gap-2">
+<span class="text-xs text-[#64748b]">10:28 AM</span>
+<span class="text-sm font-semibold text-white">You</span>
+</div>
+<div class="bg-primary p-4 rounded-l-xl rounded-br-xl text-white leading-relaxed shadow-lg shadow-blue-900/10">
+<p>Can you explain what a "Deadhead" means?</p>
+</div>
+</div>
+</div>
+<!-- AI Typing Indicator -->
+<div class="flex gap-4 max-w-3xl">
+<div class="bg-gradient-to-br from-primary to-blue-600 rounded-full size-10 shrink-0 flex items-center justify-center shadow-lg shadow-blue-900/20">
+<span class="material-symbols-outlined text-white text-[20px]">smart_toy</span>
+</div>
+<div class="flex flex-col gap-2 justify-center">
+<div class="bg-[#1e293b] px-4 py-3 rounded-r-xl rounded-bl-xl border border-[#222f49] w-fit flex gap-1 items-center h-10">
+<div class="size-2 bg-primary rounded-full animate-bounce"></div>
+<div class="size-2 bg-primary rounded-full animate-bounce delay-75"></div>
+<div class="size-2 bg-primary rounded-full animate-bounce delay-150"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Input Area -->
+<div class="p-6 bg-[#101623] border-t border-[#222f49] z-20 shrink-0">
+<div class="max-w-4xl mx-auto">
+<div class="relative group">
+<div class="absolute -inset-0.5 bg-gradient-to-r from-primary/50 to-purple-600/50 rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+<div class="relative flex items-end gap-2 bg-[#1e293b] rounded-xl p-2 border border-[#334155] focus-within:border-primary focus-within:ring-1 focus-within:ring-primary/50 transition-all shadow-xl">
+<button class="p-2 text-[#64748b] hover:text-white hover:bg-[#334155] rounded-lg transition-colors shrink-0" title="Attach file">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+</button>
+<textarea class="w-full bg-transparent border-none text-white placeholder-[#64748b] focus:ring-0 resize-none py-3 max-h-32 text-sm leading-relaxed" placeholder="Ask about freight rates, dispatching, or logistics..." rows="1" style="min-height: 44px;"></textarea>
+<button class="p-2 bg-primary hover:bg-blue-600 text-white rounded-lg transition-all duration-300 shadow-lg shadow-blue-900/50 shrink-0 group/btn">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform">send</span>
+</button>
+</div>
+</div>
+<p class="text-center text-[10px] text-[#475569] mt-3">
+                    Study Buddy can make mistakes. Consider checking important information.
+                </p>
+</div>
+</div>
+</div>
+</body></html>

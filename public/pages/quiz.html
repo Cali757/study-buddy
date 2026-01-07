@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy - Quiz View</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1f2937",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo Section -->
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">Study Buddy</h1>
+</div>
+<!-- Timer Section (Hidden on very small screens) -->
+<div class="hidden md:flex items-center gap-4 bg-white dark:bg-slate-800 rounded-full px-4 py-1.5 border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">timer</span>
+<div class="flex items-baseline gap-1">
+<span class="text-lg font-bold tabular-nums">14</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">m</span>
+</div>
+<span class="text-slate-300 dark:text-slate-600">:</span>
+<div class="flex items-baseline gap-1">
+<span class="text-lg font-bold tabular-nums">59</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">s</span>
+</div>
+</div>
+</div>
+<!-- Quit Button -->
+<button class="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span class="hidden sm:inline">Quit Quiz</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center justify-center p-4 md:p-8">
+<div class="w-full max-w-5xl flex flex-col gap-6">
+<!-- Progress Section -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Topic: Freight Fundamentals</span>
+<span class="text-sm font-bold text-primary">Question 3 of 10</span>
+</div>
+<div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500 ease-out" style="width: 30%"></div>
+</div>
+</div>
+<!-- Quiz Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="grid lg:grid-cols-5 gap-0">
+<!-- Left: Visual/Context -->
+<div class="lg:col-span-2 bg-slate-100 dark:bg-slate-900/50 p-6 flex flex-col justify-center items-center relative overflow-hidden group">
+<!-- Decorative gradient blob -->
+<div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-700"></div>
+<div class="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 bg-slate-800">
+<div class="w-full h-full bg-center bg-cover bg-no-repeat transform hover:scale-105 transition-transform duration-700" data-alt="Illustration of a specialized step deck trailer carrying oversized industrial equipment" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAz_MgVDLBh9vwonF3b-lCXcKM9S5AeB1jMJRDXbROL38A0nBDqYe2XoAaKIArlBoYeEbp7wtUxswwI4GEHqXBJ3GFz-KGfLoXP9Mop8qk3XazQySz29foNlzcX6cniaim5mHd0DEEM_x1LupiBmRLbYQ6NEwjbhu7mtpnV50fFsrIZd8jJXrA7BOBoEdRWr40o-eWrTjiktao_nJQ_7GPZMx8Qqq4ekBCqYhr2HOO1sgIUvGB6YqWSw0uQaw7A82tCdfNbLmihWCZm");'>
+<!-- Overlay for text readability if needed -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<div class="absolute bottom-3 left-3 right-3">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-black/50 text-white backdrop-blur-sm border border-white/10">
+<span class="material-symbols-outlined text-sm mr-1">image</span>
+                                    Trailer Diagram 3.A
+                                </span>
+</div>
+</div>
+<div class="mt-4 text-center">
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Visual Reference</p>
+</div>
+</div>
+<!-- Right: Question & Interaction -->
+<div class="lg:col-span-3 p-6 md:p-8 flex flex-col h-full">
+<div class="mb-6">
+<h2 class="text-2xl md:text-3xl font-bold leading-tight mb-2 text-slate-900 dark:text-white">Identifying Trailer Types</h2>
+<p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Which of the following trailer types is best suited for hauling tall freight that cannot be loaded from the rear due to height restrictions?
+                            </p>
+</div>
+<!-- Answer Options -->
+<div class="flex-grow flex flex-col gap-3">
+<!-- Option 1 -->
+<label class="group relative flex items-center p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200">
+<input class="peer sr-only" name="quiz-answer" type="radio"/>
+<div class="flex items-center justify-center h-8 w-8 rounded-full border-2 border-slate-300 dark:border-slate-600 peer-checked:border-primary peer-checked:bg-primary text-white transition-colors mr-4 shrink-0 group-hover:scale-110 duration-200">
+<span class="text-sm font-bold opacity-0 peer-checked:opacity-100">A</span>
+</div>
+<div class="flex-grow">
+<span class="block text-base font-semibold text-slate-700 dark:text-slate-200 group-hover:text-primary dark:group-hover:text-primary transition-colors">Standard Dry Van</span>
+</div>
+<div class="absolute inset-0 rounded-lg ring-2 ring-primary ring-opacity-0 peer-checked:ring-opacity-100 transition-all pointer-events-none"></div>
+</label>
+<!-- Option 2 -->
+<label class="group relative flex items-center p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200">
+<input class="peer sr-only" name="quiz-answer" type="radio"/>
+<div class="flex items-center justify-center h-8 w-8 rounded-full border-2 border-slate-300 dark:border-slate-600 peer-checked:border-primary peer-checked:bg-primary text-white transition-colors mr-4 shrink-0 group-hover:scale-110 duration-200">
+<span class="text-sm font-bold opacity-0 peer-checked:opacity-100">B</span>
+</div>
+<div class="flex-grow">
+<span class="block text-base font-semibold text-slate-700 dark:text-slate-200 group-hover:text-primary dark:group-hover:text-primary transition-colors">Refrigerated "Reefer"</span>
+</div>
+<div class="absolute inset-0 rounded-lg ring-2 ring-primary ring-opacity-0 peer-checked:ring-opacity-100 transition-all pointer-events-none"></div>
+</label>
+<!-- Option 3 (Selected State Simulation) -->
+<label class="group relative flex items-center p-4 rounded-lg border-2 border-primary bg-primary/5 dark:bg-primary/10 cursor-pointer transition-all duration-200">
+<input checked="" class="peer sr-only" name="quiz-answer" type="radio"/>
+<div class="flex items-center justify-center h-8 w-8 rounded-full border-2 border-primary bg-primary text-white transition-colors mr-4 shrink-0">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex-grow">
+<span class="block text-base font-semibold text-primary">Step Deck (Drop Deck)</span>
+</div>
+<!-- Subtle checkmark icon on the far right for selected state -->
+<span class="material-symbols-outlined text-primary ml-2 animate-pulse">check_circle</span>
+</label>
+<!-- Option 4 -->
+<label class="group relative flex items-center p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200">
+<input class="peer sr-only" name="quiz-answer" type="radio"/>
+<div class="flex items-center justify-center h-8 w-8 rounded-full border-2 border-slate-300 dark:border-slate-600 peer-checked:border-primary peer-checked:bg-primary text-white transition-colors mr-4 shrink-0 group-hover:scale-110 duration-200">
+<span class="text-sm font-bold opacity-0 peer-checked:opacity-100">D</span>
+</div>
+<div class="flex-grow">
+<span class="block text-base font-semibold text-slate-700 dark:text-slate-200 group-hover:text-primary dark:group-hover:text-primary transition-colors">Standard Flatbed</span>
+</div>
+<div class="absolute inset-0 rounded-lg ring-2 ring-primary ring-opacity-0 peer-checked:ring-opacity-100 transition-all pointer-events-none"></div>
+</label>
+</div>
+<!-- Action Bar -->
+<div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+<button class="text-sm font-medium text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 flex items-center gap-1 transition-colors order-2 sm:order-1">
+<span class="material-symbols-outlined text-lg">flag</span>
+                                Report Issue
+                            </button>
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg shadow-blue-500/20 active:scale-95 transition-all duration-200 order-1 sm:order-2">
+<span>Check Answer</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Keyboard Shortcuts Hint -->
+<div class="hidden lg:flex justify-center items-center gap-6 text-xs text-slate-400 dark:text-slate-500 font-medium">
+<div class="flex items-center gap-2">
+<kbd class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 font-sans">1</kbd>
+                    -
+                    <kbd class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 font-sans">4</kbd>
+<span>to select</span>
+</div>
+<div class="w-1 h-1 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+<div class="flex items-center gap-2">
+<kbd class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 font-sans">Enter</kbd>
+<span>to submit</span>
+</div>
+</div>
+</div>
+</main>
+</body></html>

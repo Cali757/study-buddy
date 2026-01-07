@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy - Progress Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0d59f2",
+              "background-light": "#f5f6f8",
+              "background-dark": "#101622",
+              "card-dark": "#1e293b",
+              "card-light": "#ffffff",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for sleek look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222f49; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0d59f2; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-[#222f49] bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 lg:px-10 py-3">
+<div class="flex items-center justify-between mx-auto max-w-7xl">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<span class="material-symbols-outlined !text-[32px]">local_shipping</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">Study Buddy</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium hover:text-primary transition-colors" href="#">Lessons</a>
+<a class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium hover:text-primary transition-colors" href="#">Quizzes</a>
+<a class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium hover:text-primary transition-colors" href="#">Community</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex w-64 items-center rounded-lg bg-slate-200 dark:bg-[#222f49] px-3 py-2">
+<span class="material-symbols-outlined text-slate-500 dark:text-[#90a4cb]">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm placeholder:text-slate-500 dark:placeholder:text-[#90a4cb] px-2" placeholder="Search routes..."/>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-10 w-10 border-2 border-primary cursor-pointer hover:opacity-80 transition-opacity" data-alt="User profile avatar showing a professional driver" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnRyvo24l5MaSSx9y5NkdQREmUyiVOA50JqUj0npC_-IklMPsIQuKNP_EKVcDM1VofYtWP7IJXeptWVTurMf9YkHLQPepA0Wijb9rnhjaJtJMW7OmhE6F8Q_lHg_ZKc4ZoN9rdPuVieF6OStsi31k94VAV1dxyf9Qx0ELIF8k0Zv1TRKW_Qt1JJTpyDiSji0yMpmtiyC-6Er5GhnS4kDCjqTIc3DpvxqHQMyuio-unuCYNJPxZRHPLeXuSqzeoFpMz3Fsf9ft8sITC");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 lg:px-10 py-8 space-y-8">
+<!-- Welcome Header -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-4xl md:text-5xl font-black tracking-tight bg-gradient-to-r from-white via-blue-100 to-slate-400 bg-clip-text text-transparent dark:text-transparent text-slate-900">Mission Control</h1>
+<p class="text-slate-500 dark:text-[#90a4cb] text-lg">Welcome back, Driver. Your fleet is ready for the next haul.</p>
+</div>
+<div class="flex items-center gap-2 text-sm font-medium bg-primary/10 text-primary px-4 py-2 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span>Pro Member</span>
+</div>
+</section>
+<!-- Quick Stats -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Stat 1 -->
+<div class="group relative overflow-hidden rounded-xl bg-card-light dark:bg-card-dark p-6 border border-slate-200 dark:border-[#222f49] hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-500/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">map</span>
+</div>
+<span class="text-emerald-500 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +12%
+                    </span>
+</div>
+<p class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium mb-1">Miles Traveled (Lessons)</p>
+<p class="text-3xl font-bold tracking-tight">42</p>
+<div class="absolute bottom-0 left-0 h-1 bg-primary w-[42%] group-hover:w-full transition-all duration-700 ease-out"></div>
+</div>
+<!-- Stat 2 -->
+<div class="group relative overflow-hidden rounded-xl bg-card-light dark:bg-card-dark p-6 border border-slate-200 dark:border-[#222f49] hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-500/10 rounded-lg text-purple-400">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<span class="text-emerald-500 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +5%
+                    </span>
+</div>
+<p class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium mb-1">Cargo Delivered (Quizzes)</p>
+<p class="text-3xl font-bold tracking-tight">15</p>
+<div class="absolute bottom-0 left-0 h-1 bg-purple-500 w-[15%] group-hover:w-full transition-all duration-700 ease-out"></div>
+</div>
+<!-- Stat 3 -->
+<div class="group relative overflow-hidden rounded-xl bg-card-light dark:bg-card-dark p-6 border border-slate-200 dark:border-[#222f49] hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-500/10 rounded-lg text-orange-400">
+<span class="material-symbols-outlined">local_fire_department</span>
+</div>
+<span class="text-emerald-500 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> 1 day
+                    </span>
+</div>
+<p class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium mb-1">Current Streak</p>
+<p class="text-3xl font-bold tracking-tight">7 <span class="text-lg font-normal text-slate-500 dark:text-slate-400">days</span></p>
+<div class="absolute bottom-0 left-0 h-1 bg-orange-500 w-full animate-pulse"></div>
+</div>
+</section>
+<!-- Main Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Knowledge Route & Visuals (2/3 width) -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Knowledge Route Map -->
+<div class="rounded-xl overflow-hidden bg-card-light dark:bg-card-dark border border-slate-200 dark:border-[#222f49] flex flex-col h-[400px]">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-[#222f49] flex justify-between items-center bg-card-light dark:bg-[#182234]">
+<h3 class="font-bold text-lg">Your Knowledge Route</h3>
+<button class="text-xs font-medium text-primary hover:text-white hover:bg-primary px-3 py-1 rounded-md transition-all">View Full Map</button>
+</div>
+<div class="relative flex-1 bg-cover bg-center group" data-alt="Stylized dark digital map with glowing blue route lines connecting city nodes representing learning modules" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCaxZLR3N6jGOrd4n5VN3IMjArve5-9ewJYQCw2m8Odx0lV5grEdEMKAvgida-QBMNxJ1zX2qp9t3sThKpsCCZEvFopyye7W_W6wX9Igx_44Fc-sRP43I6dIG6oMSsEDLxy2VBoJxLsy4mWj_NgOMlh9k1-7MZXuN-yJm-zrM5SSNiMGusYCi5veQGPUeej0kkyw3Wl3i9KwPYir2XlMiqFTR_ZMQH_f1H8XdJTqTO24_yPolGREueFcjZPu8HlMT74jtNdoszrprht');">
+<!-- Dark Overlay -->
+<div class="absolute inset-0 bg-slate-900/60 group-hover:bg-slate-900/40 transition-colors"></div>
+<!-- Floating Controls -->
+<div class="absolute top-4 right-4 flex flex-col gap-2">
+<button class="bg-card-dark/90 text-white p-2 rounded-lg hover:bg-primary transition-colors backdrop-blur-sm border border-white/10 shadow-lg">
+<span class="material-symbols-outlined block">add</span>
+</button>
+<button class="bg-card-dark/90 text-white p-2 rounded-lg hover:bg-primary transition-colors backdrop-blur-sm border border-white/10 shadow-lg">
+<span class="material-symbols-outlined block">remove</span>
+</button>
+</div>
+<!-- Map Nodes (Simulated) -->
+<div class="absolute bottom-10 left-10 md:left-20 animate-bounce" style="animation-duration: 3s;">
+<div class="relative">
+<div class="w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_#0d59f2]"></div>
+<div class="absolute -top-10 -left-6 bg-card-dark border border-primary/50 px-3 py-1 rounded text-xs whitespace-nowrap text-white">
+                                    Current Stop: Brokerage 101
+                                </div>
+</div>
+</div>
+<!-- Connection Line (Simulated SVG overlay) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-50" xmlns="http://www.w3.org/2000/svg">
+<path d="M 80 320 Q 150 250 250 280 T 450 180" fill="none" stroke="#0d59f2" stroke-dasharray="8 4" stroke-width="3"></path>
+</svg>
+</div>
+</div>
+<!-- Skill Mastery Charts -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Weekly Activity -->
+<div class="rounded-xl bg-card-light dark:bg-card-dark border border-slate-200 dark:border-[#222f49] p-6">
+<h4 class="font-bold text-lg mb-6">Weekly Haul Log</h4>
+<div class="flex items-end justify-between h-40 gap-2">
+<!-- Bars -->
+<div class="flex flex-col items-center gap-2 w-full group">
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 h-[30%] group-hover:bg-primary transition-all"></div>
+</div>
+<span class="text-xs text-slate-400">M</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full group">
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 h-[65%] group-hover:bg-primary transition-all"></div>
+</div>
+<span class="text-xs text-slate-400">T</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full group">
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 h-[45%] group-hover:bg-primary transition-all"></div>
+</div>
+<span class="text-xs text-slate-400">W</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full group">
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary h-[85%] shadow-[0_0_15px_rgba(13,89,242,0.5)]"></div>
+</div>
+<span class="text-xs text-white font-bold">T</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full group">
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 h-[20%] group-hover:bg-primary transition-all"></div>
+</div>
+<span class="text-xs text-slate-400">F</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full group">
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 h-[10%] group-hover:bg-primary transition-all"></div>
+</div>
+<span class="text-xs text-slate-400">S</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full group">
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 h-[0%] group-hover:bg-primary transition-all"></div>
+</div>
+<span class="text-xs text-slate-400">S</span>
+</div>
+</div>
+</div>
+<!-- Domain Competency -->
+<div class="rounded-xl bg-card-light dark:bg-card-dark border border-slate-200 dark:border-[#222f49] p-6 flex flex-col justify-between">
+<h4 class="font-bold text-lg mb-4">Competency Radar</h4>
+<div class="space-y-4">
+<!-- Skill 1 -->
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-300">Dispatching</span>
+<span class="text-primary font-bold">85%</span>
+</div>
+<div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-blue-400 w-[85%] rounded-full"></div>
+</div>
+</div>
+<!-- Skill 2 -->
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-300">Brokering</span>
+<span class="text-primary font-bold">60%</span>
+</div>
+<div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-blue-400 w-[60%] rounded-full"></div>
+</div>
+</div>
+<!-- Skill 3 -->
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-300">Regulations</span>
+<span class="text-primary font-bold">45%</span>
+</div>
+<div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-blue-400 w-[45%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-700">
+<p class="text-xs text-slate-400 italic">"Focus on Regulations to boost your overall rating."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Tasks & Reflection (1/3 width) -->
+<div class="space-y-8">
+<!-- Active Hauls (In Progress) -->
+<div class="rounded-xl bg-card-light dark:bg-card-dark border border-slate-200 dark:border-[#222f49] p-0 overflow-hidden">
+<div class="p-5 border-b border-slate-200 dark:border-[#222f49] bg-slate-50 dark:bg-[#182234]">
+<h3 class="font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">pending_actions</span>
+                            Active Hauls
+                        </h3>
+</div>
+<div class="p-5 space-y-4">
+<!-- Card 1 -->
+<div class="bg-background-light dark:bg-[#101622] rounded-lg p-4 border border-slate-200 dark:border-[#222f49] hover:border-primary transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-blue-500/20 text-blue-300 text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wider">Module 4</span>
+<span class="material-symbols-outlined text-slate-500 text-sm">more_horiz</span>
+</div>
+<h4 class="font-bold text-md mb-3 leading-snug">Advanced Rate Negotiation</h4>
+<div class="flex items-center gap-3 mb-3">
+<div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%]"></div>
+</div>
+<span class="text-xs font-mono text-slate-400">75%</span>
+</div>
+<button class="w-full py-2 bg-primary hover:bg-blue-600 text-white text-sm font-medium rounded transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+                                Continue Haul
+                            </button>
+</div>
+<!-- Card 2 -->
+<div class="bg-background-light dark:bg-[#101622] rounded-lg p-4 border border-slate-200 dark:border-[#222f49] hover:border-primary transition-colors cursor-pointer opacity-75 hover:opacity-100">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-purple-500/20 text-purple-300 text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wider">Quiz</span>
+<span class="material-symbols-outlined text-slate-500 text-sm">more_horiz</span>
+</div>
+<h4 class="font-bold text-md mb-3 leading-snug">Safety Compliance Check</h4>
+<div class="flex items-center gap-3 mb-3">
+<div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-purple-500 w-[20%]"></div>
+</div>
+<span class="text-xs font-mono text-slate-400">20%</span>
+</div>
+<button class="w-full py-2 bg-background-dark border border-slate-600 hover:border-white text-white text-sm font-medium rounded transition-colors flex items-center justify-center gap-2">
+                                Start Engine
+                            </button>
+</div>
+</div>
+</div>
+<!-- Reflection Log -->
+<div class="rounded-xl bg-gradient-to-br from-card-dark to-[#101622] border border-slate-200 dark:border-[#222f49] p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+<h3 class="font-bold text-lg mb-2 flex items-center gap-2 relative z-10">
+<span class="material-symbols-outlined text-yellow-400">lightbulb</span>
+                        Driver's Log
+                    </h3>
+<p class="text-sm text-slate-400 mb-4 relative z-10">Record your insights from the road. What did you learn today?</p>
+<textarea class="w-full bg-[#0d121c] border border-[#222f49] rounded-lg p-3 text-sm text-white placeholder:text-slate-600 focus:ring-1 focus:ring-primary focus:border-primary resize-none mb-3 relative z-10" placeholder="Today I realized that broker transparency is key..." rows="4"></textarea>
+<div class="flex justify-end relative z-10">
+<button class="text-xs font-bold text-primary hover:text-white transition-colors flex items-center gap-1">
+                            SAVE ENTRY <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Motivation Widget -->
+<div class="rounded-xl bg-primary/5 border border-primary/20 p-6 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">format_quote</span>
+<p class="text-lg font-medium italic text-slate-200 mb-2">"The line between disorder and order lies in logistics."</p>
+<p class="text-xs text-primary font-bold uppercase tracking-widest">- Sun Tzu</p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

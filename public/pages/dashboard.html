@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101623", // Deep charcoal/blue-black
+                        "card-dark": "#182234", // Slightly lighter for cards
+                        "card-border": "#314368", // Silver/Blueish border
+                        "text-secondary": "#90a4cb", // Blue-grey text
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .network-bg {
+            background-color: #101623;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(13, 89, 242, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(13, 89, 242, 0.05) 0%, transparent 25%);
+        }
+        
+        /* Subtle grid pattern overlay */
+        .grid-overlay {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 rgba(13, 89, 242, 0.4);
+            }
+            50% {
+                opacity: .9;
+                box-shadow: 0 0 20px 0 rgba(13, 89, 242, 0.2);
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display network-bg relative min-h-screen flex flex-col overflow-x-hidden">
+<!-- Background Grid Pattern -->
+<div class="fixed inset-0 pointer-events-none grid-overlay z-0"></div>
+<div class="relative z-10 flex flex-col h-full grow">
+<!-- Header -->
+<header class="sticky top-0 z-50 w-full border-b border-card-border/30 bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-white">Study Buddy</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-text-secondary hover:text-white transition-colors rounded-lg hover:bg-white/5">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+</button>
+<button class="p-2 text-text-secondary hover:text-white transition-colors rounded-lg hover:bg-white/5">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</button>
+<div class="h-6 w-px bg-card-border/50 mx-1"></div>
+<div class="flex items-center gap-3 pl-1 cursor-pointer group">
+<div class="flex flex-col items-end hidden sm:flex">
+<span class="text-sm font-bold text-white leading-none">Alex Driver</span>
+<span class="text-xs text-text-secondary">Level 12 Logistics Pro</span>
+</div>
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-card-border group-hover:border-primary transition-colors" data-alt="Portrait of a professional logistics worker" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA58DEmlWn8yRpEskTHqzmrjXzufkWvJUbbnqM5kdsaNvfA69nM6UTcOGA3kKPZ8lU_owmVG3lAf-KUXRr3QRViwdob5TI_BYTIjdL_QT5YZVJCOwTPMz6u54Q7od-3_yRBDTzUS__w_wPAo0XlXtpA8O3l2_W9CCXGJbafvplpgsyUNgZWg3TsTVLQofjCCSB0zn89MOVpikurtTvCWV4SvbOHgaZBCopOT2muO0ulXAymRMnIKuyJdRdd3K3-lAIAl5S2d50g7J57');"></div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+<!-- Hero Section: Current Focus -->
+<section aria-label="Current Focus">
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-card-dark to-[#0f1520] border border-card-border shadow-lg shadow-black/20">
+<!-- Decorative glow -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row">
+<!-- Left: Content -->
+<div class="flex-1 p-6 sm:p-8 lg:p-10 flex flex-col justify-center z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-primary/20 text-blue-300 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider border border-primary/30">Current Focus</span>
+<span class="text-text-secondary text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 15 min left
+                                </span>
+</div>
+<h2 class="text-3xl sm:text-4xl font-bold text-white mb-3 tracking-tight">Mastering Bill of Lading</h2>
+<p class="text-text-secondary text-lg mb-6 max-w-xl">You're 65% through this crucial module. Dive back in to understand the legal nuances of freight documentation and liability.</p>
+<div class="flex flex-wrap items-center gap-4">
+<button class="animate-pulse-slow bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg flex items-center gap-2 transition-all transform active:scale-95 shadow-lg shadow-blue-900/50">
+<span class="material-symbols-outlined">play_circle</span>
+                                    Resume Learning
+                                </button>
+<button class="bg-card-border/30 hover:bg-card-border/50 text-white font-medium py-3 px-6 rounded-lg border border-card-border/50 transition-colors">
+                                    View Syllabus
+                                </button>
+</div>
+</div>
+<!-- Right: Visual/Image -->
+<div class="lg:w-2/5 relative min-h-[250px] lg:min-h-0">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Abstract digital representation of shipping containers and data streams" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZ0G8-SoxxOeXpEpLqMkylKljArisJbRlkM1YxGSt81pQUGdy1IAe0J6jZhj2vQIN3NG7DfbEZWzTuNCoH_4nnfk86CHhliec7natQm7CBI5It1dQKhwQrEBZbVXk1sxA0lwEZuKjh7Shwku6oFjLQZ3D4v6AfMKT5uxKDx-xvGAyYDWrKraDbw5RfRe0tQJBKvdK-xHz7tI6Z9ZbbzslhlnukVtO3yPLxscwvq5ukEz0rDWVLhWHeiFcB6bsR9fLw6S9Bnj5JC4Ck');">
+<div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-card-dark via-card-dark/20 to-transparent"></div>
+</div>
+</div>
+</div>
+<!-- Progress Bar at bottom of card -->
+<div class="h-1.5 w-full bg-black/40">
+<div class="h-full bg-primary shadow-[0_0_10px_rgba(13,89,242,0.7)]" style="width: 65%;"></div>
+</div>
+</div>
+</section>
+<!-- Stats Row -->
+<section aria-label="Key Statistics">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Stat 1 -->
+<div class="bg-card-dark/60 backdrop-blur border border-card-border p-5 rounded-lg flex flex-col gap-2 hover:border-primary/50 transition-colors group">
+<div class="flex items-center justify-between">
+<p class="text-text-secondary text-sm font-medium">Current Streak</p>
+<span class="material-symbols-outlined text-orange-400 group-hover:scale-110 transition-transform">local_fire_department</span>
+</div>
+<p class="text-white text-2xl font-bold">5 Days</p>
+</div>
+<!-- Stat 2 -->
+<div class="bg-card-dark/60 backdrop-blur border border-card-border p-5 rounded-lg flex flex-col gap-2 hover:border-primary/50 transition-colors group">
+<div class="flex items-center justify-between">
+<p class="text-text-secondary text-sm font-medium">Total XP</p>
+<span class="material-symbols-outlined text-purple-400 group-hover:scale-110 transition-transform">military_tech</span>
+</div>
+<p class="text-white text-2xl font-bold">1,250</p>
+</div>
+<!-- Stat 3 -->
+<div class="bg-card-dark/60 backdrop-blur border border-card-border p-5 rounded-lg flex flex-col gap-2 hover:border-primary/50 transition-colors group">
+<div class="flex items-center justify-between">
+<p class="text-text-secondary text-sm font-medium">Hours Studied</p>
+<span class="material-symbols-outlined text-blue-400 group-hover:scale-110 transition-transform">schedule</span>
+</div>
+<p class="text-white text-2xl font-bold">14.5h</p>
+</div>
+<!-- Stat 4 -->
+<div class="bg-card-dark/60 backdrop-blur border border-card-border p-5 rounded-lg flex flex-col gap-2 hover:border-primary/50 transition-colors group">
+<div class="flex items-center justify-between">
+<p class="text-text-secondary text-sm font-medium">Modules Done</p>
+<span class="material-symbols-outlined text-green-400 group-hover:scale-110 transition-transform">check_circle</span>
+</div>
+<p class="text-white text-2xl font-bold">12</p>
+</div>
+</div>
+</section>
+<!-- Main Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Activity & Charts (Span 2) -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Activity Chart -->
+<div class="bg-card-dark border border-card-border rounded-xl p-6 relative overflow-hidden">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-white text-lg font-bold">Learning Activity</h3>
+<p class="text-text-secondary text-sm">Last 7 days performance</p>
+</div>
+<select class="bg-background-dark text-white text-sm border border-card-border rounded-md px-3 py-1 focus:ring-primary focus:border-primary outline-none">
+<option>This Week</option>
+<option>Last Week</option>
+</select>
+</div>
+<div class="h-64 w-full">
+<!-- Custom SVG Chart tailored to theme -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#0d59f2" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#0d59f2" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Grid Lines -->
+<line opacity="0.3" stroke="#314368" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="800" y1="0" y2="0"></line>
+<line opacity="0.3" stroke="#314368" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="800" y1="50" y2="50"></line>
+<line opacity="0.3" stroke="#314368" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="800" y1="100" y2="100"></line>
+<line opacity="0.3" stroke="#314368" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="800" y1="150" y2="150"></line>
+<!-- Chart Path -->
+<path d="M0,150 C50,150 50,120 100,100 C150,80 200,140 250,110 C300,80 350,40 400,60 C450,80 500,100 550,50 C600,0 650,80 700,40 C750,0 800,20 800,20 V200 H0 Z" fill="url(#chartGradient)"></path>
+<path d="M0,150 C50,150 50,120 100,100 C150,80 200,140 250,110 C300,80 350,40 400,60 C450,80 500,100 550,50 C600,0 650,80 700,40 C750,0 800,20 800,20" fill="none" stroke="#0d59f2" stroke-linecap="round" stroke-width="3"></path>
+<!-- Data Points -->
+<circle cx="100" cy="100" fill="#0d59f2" r="4" stroke="#101623" stroke-width="2"></circle>
+<circle cx="250" cy="110" fill="#0d59f2" r="4" stroke="#101623" stroke-width="2"></circle>
+<circle cx="400" cy="60" fill="#0d59f2" r="4" stroke="#101623" stroke-width="2"></circle>
+<circle cx="550" cy="50" fill="#0d59f2" r="4" stroke="#101623" stroke-width="2"></circle>
+<circle cx="700" cy="40" fill="#fff" r="4" stroke="#0d59f2" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="flex justify-between mt-2 px-2 text-xs font-bold text-text-secondary uppercase tracking-wide">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+<!-- Recently Viewed -->
+<div>
+<h3 class="text-white text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span> 
+                            Recently Viewed Lessons
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Recent Card 1 -->
+<div class="bg-card-dark border border-card-border rounded-lg p-4 flex gap-4 hover:border-primary transition-all cursor-pointer group">
+<div class="w-20 h-20 rounded-md bg-cover bg-center shrink-0 border border-card-border/50 group-hover:border-primary/50" data-alt="Close up of a semi-truck dashboard" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBST55s0YJIPAQlRbYJLoz6jIeT7m7TaHAXd5-LzNOJqu2AZQYQk5PG_yIO6KQG_30GxfwIMImsoeyR474uHiXr_XUvfoqwSN_LH83uLqW8wwuTeQMVmumI5NxKnGm7PGnzZ42rjiay9U0r3KhMoZFjVKDi0m1ZRDSjhweC1y2DVUw7VdCPEzxuqOlrJTeaI24Id2bv0I8EdUtGX6X68_SIjAS1mSiQp59qajg2sKGG0lJKIqOFAhcel8g0QlGp8y2T1igQX_H55dDz');"></div>
+<div class="flex flex-col justify-between py-0.5">
+<div>
+<div class="text-[10px] text-primary font-bold uppercase tracking-wider mb-1">Module 4</div>
+<h4 class="text-white font-bold leading-tight group-hover:text-primary transition-colors">Freight Classes 101</h4>
+</div>
+<div class="flex items-center gap-3 text-xs text-text-secondary">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">quiz</span> Score: 90%</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> 2d ago</span>
+</div>
+</div>
+</div>
+<!-- Recent Card 2 -->
+<div class="bg-card-dark border border-card-border rounded-lg p-4 flex gap-4 hover:border-primary transition-all cursor-pointer group">
+<div class="w-20 h-20 rounded-md bg-cover bg-center shrink-0 border border-card-border/50 group-hover:border-primary/50" data-alt="Map showing logistics routes connecting cities" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCJHqhaIKRKep-ghWeZmniqFJmTEme0Ey7wB5MMK2eFHJhruhP6Zf7d1OSYDniYih_c_GIqNGUP_g7eKsUeaRSTUlc2oticf8kUhsayQ-cMXs1v52to4xtvKaJW6eXoD20EuLNq60GNAA_72O-MJPdZg1yv6GblyF6IKcx73agYx9-ZqlvAAuStuQrl5SA5wM5w9QH5JH7rMYAjesnI9dFq-R6lrxaOhsUo_2oCJU3iwcBWlnQZ0iemZvgWyZxaUuY9s2kwT67yTsbJ');"></div>
+<div class="flex flex-col justify-between py-0.5">
+<div>
+<div class="text-[10px] text-green-400 font-bold uppercase tracking-wider mb-1">Insight</div>
+<h4 class="text-white font-bold leading-tight group-hover:text-primary transition-colors">Top Dispatching Strategies</h4>
+</div>
+<div class="flex items-center gap-3 text-xs text-text-secondary">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> Read</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2h ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Skills Progress (Span 1) -->
+<div class="space-y-6">
+<div class="bg-card-dark border border-card-border rounded-xl p-6 h-full flex flex-col">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-white text-lg font-bold">Skill Mastery</h3>
+<button class="text-primary hover:text-white transition-colors text-sm font-medium">View All</button>
+</div>
+<!-- Overall Circular Chart -->
+<div class="flex justify-center mb-10 relative">
+<svg class="size-48 transform -rotate-90">
+<circle class="text-background-dark/50" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary drop-shadow-[0_0_8px_rgba(13,89,242,0.6)]" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.9" stroke-dashoffset="82.9" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-bold text-white">85%</span>
+<span class="text-xs text-text-secondary uppercase tracking-widest mt-1">Overall</span>
+</div>
+</div>
+<!-- Breakdown List -->
+<div class="space-y-5 flex-1">
+<!-- Skill 1 -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-white font-medium">Brokering</span>
+<span class="text-primary font-bold">80%</span>
+</div>
+<div class="h-2 w-full bg-[#222f49] rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[80%]"></div>
+</div>
+</div>
+<!-- Skill 2 -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-white font-medium">Compliance</span>
+<span class="text-yellow-500 font-bold">45%</span>
+</div>
+<div class="h-2 w-full bg-[#222f49] rounded-full overflow-hidden">
+<div class="h-full bg-yellow-500 rounded-full w-[45%]"></div>
+</div>
+</div>
+<!-- Skill 3 -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-white font-medium">Dispatching</span>
+<span class="text-purple-500 font-bold">92%</span>
+</div>
+<div class="h-2 w-full bg-[#222f49] rounded-full overflow-hidden">
+<div class="h-full bg-purple-500 rounded-full w-[92%]"></div>
+</div>
+</div>
+<!-- Skill 4 -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-white font-medium">Sales Negotiation</span>
+<span class="text-teal-400 font-bold">60%</span>
+</div>
+<div class="h-2 w-full bg-[#222f49] rounded-full overflow-hidden">
+<div class="h-full bg-teal-400 rounded-full w-[60%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

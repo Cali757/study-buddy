@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101622", // Matches the overall theme preference
+                        "surface-dark": "#101623", // Matches component snippets
+                        "surface-highlight": "#222f49", // Matches component snippets
+                        "text-secondary": "#90a4cb", // Matches component snippets
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for dark mode feeling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101623; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222f49; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #314368; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-body h-screen flex flex-col overflow-hidden text-slate-900 dark:text-white">
+<!-- Top Navigation -->
+<header class="flex-none flex items-center justify-between whitespace-nowrap border-b border-solid border-[#222f49] bg-surface-dark px-6 py-3 font-display">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Study Buddy</h2>
+</div>
+<div class="flex items-center justify-end gap-6">
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-surface-highlight hover:bg-[#314368] text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-surface-highlight hover:bg-[#314368] text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-surface-highlight" data-alt="User profile picture showing a professional headshot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCIUu3-5L0YuWoXEYVeX-7psyoXM_iAOn1Emzx994vSRqjzNYoMQb5hFLdnzLDCLSg6fBd1lSbMlE0ovPjGd-Ep01A6-qGCrEFS1o0J3YWPSSpfTDY8LWpy1MxfayawI7QEmxzbx0vWJYf9687e6dQmLrteUeUhn3ImtGbwO4V6ZMcjX00icK4qiowidS-sMpSvWrHT-7SYup3LlkiTAkO6qL5D3Sa1H5vKn9v20MqSu7v9bBdFGqc28y-t6c74PcOgrzxNPTFVYdM0");'></div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar (Navigation) -->
+<aside class="flex-none w-64 bg-surface-dark border-r border-[#222f49] flex flex-col justify-between p-4 hidden md:flex font-display">
+<div class="flex flex-col gap-6">
+<!-- User Info -->
+<div class="flex gap-3 items-center px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_uBZfI8JSb32QGH7i4VPJf0_3GI3AehPCKaLKLPooQA9K2nXeuCVv7sLIRJMTcazkwhuBCFT_vAVd2slwDhEXqRUXXj7vMpDQoPcJg9ibFd5_TghoIUZBkQzP_3fC40NwG55oBS-d5GnmouBQRnyvy2OGYUw8b3-S0maaoo5dgS8YJmiG8YZuJTm_kgDCNTZLGktlWIg-sFUasCjKMNLFErD3tq9m2QvwfUFAuwFrJVIuzfuq9c8UuXNyxKeCszUAuAnRlMDyeLMz");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-medium leading-normal">Alex Broker</h1>
+<p class="text-text-secondary text-xs font-normal leading-normal">Pro Learner</p>
+</div>
+</div>
+<!-- Nav Links -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-highlight text-text-secondary hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:text-primary transition-colors">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-highlight text-text-secondary hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:text-primary transition-colors">menu_book</span>
+<span class="text-sm font-medium">Modules</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface-highlight text-white ring-1 ring-[#314368]" href="#">
+<span class="material-symbols-outlined text-[24px] text-primary fill-1">description</span>
+<span class="text-sm font-medium">Notes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-highlight text-text-secondary hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:text-primary transition-colors">trending_up</span>
+<span class="text-sm font-medium">Progress</span>
+</a>
+</nav>
+</div>
+<!-- Upgrade Banner -->
+<div class="p-4 rounded-xl bg-gradient-to-br from-surface-highlight to-surface-dark border border-[#314368]">
+<div class="flex items-center gap-2 mb-2 text-white">
+<span class="material-symbols-outlined text-primary">verified</span>
+<span class="text-sm font-bold">Pro Access</span>
+</div>
+<p class="text-xs text-text-secondary mb-3">Unlock advanced analytics and AI tutor.</p>
+<button class="w-full py-2 bg-primary hover:bg-blue-600 text-white text-xs font-bold rounded transition-colors">Upgrade</button>
+</div>
+</aside>
+<!-- Secondary Sidebar (Notes List) -->
+<div class="flex-none w-80 bg-surface-dark/50 border-r border-[#222f49] flex flex-col">
+<!-- Search & New -->
+<div class="p-4 border-b border-[#222f49] flex flex-col gap-4">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-primary hover:bg-blue-600 text-white text-base font-bold leading-normal tracking-[0.015em] gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[24px]">add</span>
+<span>New Note</span>
+</button>
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">search</span>
+</div>
+<input class="block w-full p-2.5 pl-10 text-sm text-white bg-surface-highlight border border-transparent rounded-lg placeholder-text-secondary focus:ring-primary focus:border-primary" placeholder="Search notes..." type="text"/>
+</div>
+</div>
+<!-- Folders & Lists -->
+<div class="flex-1 overflow-y-auto p-4 space-y-4 font-display">
+<!-- Folder 1 -->
+<details class="group" open="">
+<summary class="flex cursor-pointer items-center justify-between text-white mb-2 list-none">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-secondary group-open:rotate-90 transition-transform text-[18px]">chevron_right</span>
+<span class="text-sm font-semibold tracking-wide uppercase text-text-secondary">Freight Brokering</span>
+</div>
+<span class="text-xs text-text-secondary bg-surface-highlight px-2 py-0.5 rounded-full">3</span>
+</summary>
+<div class="flex flex-col gap-2 pl-2 border-l border-[#222f49] ml-2">
+<div class="p-3 rounded-lg bg-surface-highlight border border-primary/30 cursor-pointer shadow-sm relative group/item">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-lg"></div>
+<h4 class="text-white text-sm font-medium mb-1 truncate">FMCSA Compliance Basics</h4>
+<p class="text-text-secondary text-xs truncate">Notes on Hours of Service (HOS) ELD...</p>
+<div class="flex gap-2 mt-2">
+<span class="text-[10px] text-primary bg-primary/10 px-1.5 py-0.5 rounded">#Regulations</span>
+</div>
+</div>
+<div class="p-3 rounded-lg hover:bg-surface-highlight/50 border border-transparent hover:border-[#314368] cursor-pointer transition-colors">
+<h4 class="text-white text-sm font-medium mb-1 truncate">Negotiation Tactics 101</h4>
+<p class="text-text-secondary text-xs truncate">Key phrases for rate confirmation...</p>
+</div>
+</div>
+</details>
+<!-- Folder 2 -->
+<details class="group">
+<summary class="flex cursor-pointer items-center justify-between text-white mb-2 list-none">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-secondary group-open:rotate-90 transition-transform text-[18px]">chevron_right</span>
+<span class="text-sm font-semibold tracking-wide uppercase text-text-secondary">Dispatch Workflows</span>
+</div>
+<span class="text-xs text-text-secondary bg-surface-highlight px-2 py-0.5 rounded-full">12</span>
+</summary>
+<div class="flex flex-col gap-2 pl-2 border-l border-[#222f49] ml-2">
+<div class="p-3 rounded-lg hover:bg-surface-highlight/50 border border-transparent hover:border-[#314368] cursor-pointer transition-colors">
+<h4 class="text-white text-sm font-medium mb-1 truncate">Load Board Strategies</h4>
+<p class="text-text-secondary text-xs truncate">DAT vs Truckstop comparions...</p>
+</div>
+</div>
+</details>
+<!-- Folder 3 -->
+<details class="group">
+<summary class="flex cursor-pointer items-center justify-between text-white mb-2 list-none">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-secondary group-open:rotate-90 transition-transform text-[18px]">chevron_right</span>
+<span class="text-sm font-semibold tracking-wide uppercase text-text-secondary">Safety Audit Prep</span>
+</div>
+<span class="text-xs text-text-secondary bg-surface-highlight px-2 py-0.5 rounded-full">5</span>
+</summary>
+</details>
+</div>
+</div>
+<!-- Main Editor Area -->
+<main class="flex-1 bg-surface-dark flex flex-col min-w-0 relative">
+<!-- Editor Toolbar -->
+<div class="flex items-center justify-between px-8 py-4 border-b border-[#222f49]">
+<div class="flex items-center gap-2 text-text-secondary">
+<span class="text-xs font-mono">Last edited: Today at 10:42 AM</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-highlight rounded-lg p-1">
+<button class="p-1.5 hover:bg-[#314368] rounded text-white" title="Bold"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="p-1.5 hover:bg-[#314368] rounded text-white" title="Italic"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<button class="p-1.5 hover:bg-[#314368] rounded text-white" title="Underline"><span class="material-symbols-outlined text-[18px]">format_underlined</span></button>
+<div class="w-px h-4 bg-[#314368] mx-1"></div>
+<button class="p-1.5 hover:bg-[#314368] rounded text-white" title="List"><span class="material-symbols-outlined text-[18px]">format_list_bulleted</span></button>
+<button class="p-1.5 hover:bg-[#314368] rounded text-white" title="Checklist"><span class="material-symbols-outlined text-[18px]">checklist</span></button>
+<div class="w-px h-4 bg-[#314368] mx-1"></div>
+<button class="p-1.5 hover:bg-[#314368] rounded text-white" title="Code"><span class="material-symbols-outlined text-[18px]">code</span></button>
+<button class="p-1.5 hover:bg-[#314368] rounded text-white" title="Link"><span class="material-symbols-outlined text-[18px]">link</span></button>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-text-secondary hover:text-white flex items-center gap-1 text-sm">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                        Share
+                    </button>
+<button class="text-text-secondary hover:text-white">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Editor Content -->
+<div class="flex-1 overflow-y-auto px-12 py-8 max-w-4xl mx-auto w-full">
+<!-- Title Input -->
+<input class="w-full bg-transparent border-none text-4xl font-bold text-white placeholder-gray-500 focus:ring-0 px-0 font-display mb-4" placeholder="Untitled Note" type="text" value="FMCSA Compliance Basics: HOS &amp; ELD"/>
+<!-- Tags Input -->
+<div class="flex flex-wrap items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">label</span>
+<span class="bg-primary/20 text-blue-200 px-2.5 py-1 rounded-md text-sm font-medium border border-primary/30 flex items-center gap-1">
+                        #Compliance
+                        <button class="hover:text-white"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+<span class="bg-purple-500/20 text-purple-200 px-2.5 py-1 rounded-md text-sm font-medium border border-purple-500/30 flex items-center gap-1">
+                        #Safety
+                        <button class="hover:text-white"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+<input class="bg-transparent border-none text-sm text-text-secondary focus:ring-0 focus:text-white placeholder-text-secondary/50 w-24 p-0" placeholder="Add tag..." type="text"/>
+</div>
+<!-- Rich Text Body Simulation -->
+<div class="prose prose-invert prose-lg max-w-none text-[#e2e8f0] font-body leading-relaxed">
+<p class="mb-6">The <strong class="text-white">Federal Motor Carrier Safety Administration (FMCSA)</strong> establishes regulations that are critical for every freight broker and dispatcher to understand. The core component for drivers is the Hours of Service (HOS) rules.</p>
+<h3 class="text-xl font-bold text-white font-display mb-4 mt-8">Key HOS Rules to Remember</h3>
+<ul class="list-none pl-0 space-y-3 mb-6">
+<li class="flex items-start gap-3">
+<span class="mt-1.5 size-1.5 rounded-full bg-primary flex-none"></span>
+<span><strong class="text-white">14-Hour Shift Window:</strong> A driver may not drive beyond the 14th consecutive hour after coming on duty.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="mt-1.5 size-1.5 rounded-full bg-primary flex-none"></span>
+<span><strong class="text-white">11-Hour Driving Limit:</strong> Within that 14-hour window, a driver is allowed a maximum of 11 hours of actual driving time.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="mt-1.5 size-1.5 rounded-full bg-primary flex-none"></span>
+<span><strong class="text-white">10-Hour Break:</strong> Drivers must be off duty for at least 10 consecutive hours before their shift clock resets.</span>
+</li>
+</ul>
+<blockquote class="border-l-4 border-primary pl-4 py-2 my-6 bg-surface-highlight/30 rounded-r-lg italic text-text-secondary">
+                        "Understanding the 30-minute break rule is where most dispatchers make mistakes. A driver must take a 30-minute break after 8 cumulative hours of driving."
+                    </blockquote>
+<h3 class="text-xl font-bold text-white font-display mb-4 mt-8">ELD Mandate Checklist</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 rounded-lg border border-[#314368] bg-surface-highlight/20 hover:bg-surface-highlight/40 cursor-pointer transition-colors group">
+<div class="relative flex items-center">
+<input class="peer size-5 cursor-pointer appearance-none rounded border border-text-secondary checked:bg-primary checked:border-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+</div>
+<span class="text-sm group-hover:text-white transition-colors">Verify ELD device is registered with FMCSA</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-[#314368] bg-surface-highlight/20 hover:bg-surface-highlight/40 cursor-pointer transition-colors group">
+<div class="relative flex items-center">
+<input checked="" class="peer size-5 cursor-pointer appearance-none rounded border border-text-secondary checked:bg-primary checked:border-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+</div>
+<span class="text-sm group-hover:text-white transition-colors line-through text-text-secondary">Ensure driver has instruction manual onboard</span>
+</label>
+</div>
+<p class="mt-6">Next study session: Deep dive into the <span class="bg-primary/20 text-primary border-b border-primary cursor-pointer hover:bg-primary/40 transition-colors">Safety Measurement System (SMS)</span>.</p>
+</div>
+</div>
+</main>
+<!-- Right Sidebar (Context/AI) -->
+<aside class="flex-none w-72 bg-surface-dark border-l border-[#222f49] p-4 hidden xl:flex flex-col gap-6 overflow-y-auto">
+<!-- AI Insight Card -->
+<div class="rounded-xl bg-gradient-to-b from-[#222f49] to-surface-dark border border-primary/20 p-5 shadow-lg relative overflow-hidden group">
+<div class="absolute -right-6 -top-6 bg-primary/20 size-24 rounded-full blur-2xl group-hover:bg-primary/30 transition-all duration-500"></div>
+<div class="flex items-center gap-2 mb-3 relative z-10">
+<span class="material-symbols-outlined text-primary animate-pulse">auto_awesome</span>
+<h3 class="text-white font-display font-bold text-sm">Study Buddy AI</h3>
+</div>
+<p class="text-sm text-gray-300 leading-relaxed relative z-10">
+                    Based on your notes about <strong>HOS</strong>, I recommend reviewing the "Split Sleeper Berth" exception. It's often tested in the certification exam.
+                </p>
+<button class="mt-4 w-full py-2 bg-surface-highlight hover:bg-[#314368] border border-[#314368] rounded-lg text-xs font-bold text-white flex items-center justify-center gap-2 transition-colors relative z-10">
+<span>Explain Exception</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Linked Lesson -->
+<div>
+<h3 class="text-text-secondary text-xs font-bold uppercase tracking-wider mb-3">Linked Lesson</h3>
+<div class="bg-surface-highlight/30 rounded-lg p-3 border border-[#314368] hover:border-primary/50 transition-colors cursor-pointer group">
+<div class="aspect-video w-full rounded-md bg-cover bg-center mb-3 relative overflow-hidden" data-alt="Abstract digital map background representing logistics" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDANIFYLF8Wbkw3jzUgct8u6rKI56CV5yQy-Esyh4jaHvNv74Ikp5Lu_lqchiwPt1otJpKeJaeSokh_FHc1DqFyld55gtBajvdwgd40tFYeubA6aOilpQa2CiAX_08lyw7kA9-dCqOXEQkCJYxyzLx1B4gjZt7M8nvHKAkHnutMfQuu0KiVCtHYYqqn9yyvntVNdjcBmrmnTLJvU2pG1VOpHEnyJGhCSl_bcbCmZTXBusoLb1wWpz6DudcojA50fnBaNomjP8oVJrRd");'>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-[32px]">play_circle</span>
+</div>
+</div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h4 class="text-white text-sm font-bold leading-tight mb-1 group-hover:text-primary transition-colors">Module 4: Mastering Logs</h4>
+<p class="text-xs text-text-secondary">15 mins • Intermediate</p>
+</div>
+</div>
+<div class="mt-3 w-full bg-[#101623] h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Flashcards Widget -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-text-secondary text-xs font-bold uppercase tracking-wider">Quick Quiz</h3>
+<button class="text-primary text-xs font-medium hover:underline">View All</button>
+</div>
+<div class="bg-[#101623] border border-[#222f49] rounded-lg p-4 text-center">
+<p class="text-white text-sm font-medium mb-4">What is the max driving time in a 14-hour window?</p>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-surface-highlight hover:bg-[#314368] text-gray-300 text-xs py-2 rounded transition-colors">10 Hours</button>
+<button class="bg-primary hover:bg-blue-600 text-white text-xs py-2 rounded transition-colors font-bold shadow-lg shadow-primary/20">11 Hours</button>
+<button class="bg-surface-highlight hover:bg-[#314368] text-gray-300 text-xs py-2 rounded transition-colors">12 Hours</button>
+<button class="bg-surface-highlight hover:bg-[#314368] text-gray-300 text-xs py-2 rounded transition-colors">14 Hours</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

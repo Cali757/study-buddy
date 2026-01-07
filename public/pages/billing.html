@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy - Billing &amp; Subscription</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0d59f2",
+              "background-light": "#f5f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222f49; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #314368; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white antialiased overflow-x-hidden">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-[#222f49] bg-white dark:bg-[#101623] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-gray-900 dark:text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Study Buddy</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Study Modules</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Quizzes</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Progress</a>
+<a class="text-sm font-medium leading-normal text-primary" href="#">Billing</a>
+</nav>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="User profile picture of a professional freight broker" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKrwTNeg5SZj3oO-HXoqahEdyZWGTZNtjcmAaAWhS7_b0GhXcLIRIjrLsz67mYgH8RRwrcW67uMPGQvvkfVgja46C0AAgCb3OFsAiHOO2SEq1Yao_ov8Eu8GhqNSIEbp0_nPF-Yym0Umra_Gu2waTWI8ouU6DoJ7tYWGXaFbue2_k7wMFTL8mDV29Ic9zrERnSGYqGe8-5bhVjxllM8eTrUlyy-hCJClMdAUtW3dRSGTM2hEs7fDrZZyqX6U9bM-83kHY_8oEjBWX3");'></div>
+</div>
+</header>
+<main class="flex-1 flex justify-center py-5 px-4 md:px-10 lg:px-40 w-full max-w-[1440px] mx-auto">
+<div class="flex flex-col max-w-[960px] flex-1 w-full gap-6">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-3 px-4 pt-4">
+<div class="flex min-w-72 flex-col gap-2">
+<p class="text-4xl font-black leading-tight tracking-[-0.033em]">Billing &amp; Subscription</p>
+<p class="text-gray-500 dark:text-[#90a4cb] text-base font-normal leading-normal">Manage your investment in your freight career.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#222f49] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#314368] transition-colors">
+<span class="truncate">Contact Support</span>
+</button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#222f49] shadow-sm border border-gray-100 dark:border-none relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">workspace_premium</span>
+</div>
+<p class="text-gray-500 dark:text-gray-300 text-base font-medium leading-normal z-10">Current Tier</p>
+<p class="text-2xl font-bold leading-tight z-10">Freight Master Pro</p>
+<div class="mt-2 inline-flex">
+<span class="bg-primary/20 text-primary text-xs font-bold px-2 py-1 rounded">ACTIVE</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#222f49] shadow-sm border border-gray-100 dark:border-none relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">calendar_month</span>
+</div>
+<p class="text-gray-500 dark:text-gray-300 text-base font-medium leading-normal z-10">Next Billing Date</p>
+<p class="text-2xl font-bold leading-tight z-10">Oct 24, 2023</p>
+<p class="text-xs text-gray-400 mt-2 z-10">Auto-renewal enabled</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#222f49] shadow-sm border border-gray-100 dark:border-none relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">payments</span>
+</div>
+<p class="text-gray-500 dark:text-gray-300 text-base font-medium leading-normal z-10">Monthly Price</p>
+<p class="text-2xl font-bold leading-tight z-10">$29.99<span class="text-sm font-normal text-gray-400">/mo</span></p>
+<a class="text-primary text-xs font-bold mt-2 hover:underline z-10" href="#">Switch to Annual (Save 20%)</a>
+</div>
+</div>
+<!-- Usage Progress -->
+<div class="px-4">
+<div class="flex flex-col gap-3 p-6 rounded-xl bg-gradient-to-r from-[#1a2333] to-[#161e2e] border border-[#222f49] relative overflow-hidden">
+<!-- Background abstract graphic -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 100% 0%, #0d59f2 0%, transparent 50%);"></div>
+<div class="relative z-10">
+<div class="flex gap-6 justify-between items-end mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<p class="text-base font-medium leading-normal">AI Query Credits Remaining</p>
+</div>
+<p class="text-sm font-bold text-primary leading-normal">65%</p>
+</div>
+<div class="rounded-full bg-[#314368] h-3 overflow-hidden">
+<div class="h-full rounded-full bg-primary shadow-[0_0_10px_rgba(13,89,242,0.6)]" style="width: 65%;"></div>
+</div>
+<p class="text-[#90a4cb] text-sm font-normal leading-normal mt-2">350/500 queries used this cycle. Reset in 12 days.</p>
+</div>
+</div>
+</div>
+<!-- Payment Methods Section -->
+<div class="flex flex-col gap-4 px-4">
+<h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em] pt-2">Payment Method</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Active Card -->
+<div class="rounded-xl border border-[#222f49] bg-[#1a2130] p-5 flex items-start justify-between group hover:border-primary/50 transition-colors cursor-pointer">
+<div class="flex gap-4">
+<div class="w-12 h-8 bg-white/10 rounded flex items-center justify-center">
+<img alt="Mastercard logo" class="h-5" data-alt="Mastercard logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEbR0CzYrHqhgGWTFVFii0DGY9-vcOdSdjmAJJeNSABcju1oY5zAMpKblfD5bDHqSrc35zMyvDd87lLsgECDwPB9VP4SX58TaTfA57Af0lroMrVcggRGj4tnIOVj6awCPKbIZkpiIXLLkP0w5KJbD9NnaAC2P_bSCOKRMIX6GsKi4-rgSAybiKXWY0CNbJiYVG8to7FonlCrhgHAf9HSzZt_XNLxwnqb7CpIeIUNw2kBmMrZY1cHQ7jeKflYTzgEjHVffgnVlMWcfI"/>
+</div>
+<div class="flex flex-col">
+<p class="font-bold text-sm">Mastercard ending in 8842</p>
+<p class="text-xs text-gray-400">Expiry 09/25</p>
+<div class="mt-2 flex items-center gap-1 text-xs text-green-400">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Default method</span>
+</div>
+</div>
+</div>
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+<!-- Add New Method -->
+<button class="rounded-xl border border-dashed border-[#222f49] bg-transparent p-5 flex items-center justify-center gap-2 group hover:border-primary hover:bg-primary/5 transition-all h-full min-h-[100px]">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary">add_circle</span>
+<span class="text-sm font-medium text-gray-400 group-hover:text-primary">Add Payment Method</span>
+</button>
+</div>
+</div>
+<!-- Invoice History -->
+<div class="flex flex-col gap-4 px-4 pb-10">
+<div class="flex items-center justify-between pt-4">
+<h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em]">Billing History</h2>
+<button class="text-sm text-primary font-medium hover:underline flex items-center gap-1">
+                            Download All
+                            <span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+<div class="overflow-x-auto rounded-xl border border-[#222f49] bg-[#1a2130]">
+<table class="w-full text-left text-sm">
+<thead class="bg-[#222f49] text-gray-300">
+<tr>
+<th class="px-6 py-4 font-medium">Date</th>
+<th class="px-6 py-4 font-medium">Description</th>
+<th class="px-6 py-4 font-medium">Amount</th>
+<th class="px-6 py-4 font-medium">Status</th>
+<th class="px-6 py-4 font-medium text-right">Invoice</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#222f49]">
+<tr class="hover:bg-[#222f49]/50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">Sep 24, 2023</td>
+<td class="px-6 py-4">Freight Master Pro - Monthly</td>
+<td class="px-6 py-4 font-bold text-white">$29.99</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-500 ring-1 ring-inset ring-green-500/20">
+                                            Paid
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-[#222f49]/50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">Aug 24, 2023</td>
+<td class="px-6 py-4">Freight Master Pro - Monthly</td>
+<td class="px-6 py-4 font-bold text-white">$29.99</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-500 ring-1 ring-inset ring-green-500/20">
+                                            Paid
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-[#222f49]/50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">Jul 24, 2023</td>
+<td class="px-6 py-4">Freight Master Pro - Monthly</td>
+<td class="px-6 py-4 font-bold text-white">$29.99</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-500 ring-1 ring-inset ring-green-500/20">
+                                            Paid
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer with Trust Badges -->
+<div class="flex justify-center items-center gap-6 py-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">lock</span>
+<span class="text-xs text-gray-400">Secure 256-bit SSL Encryption</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy - Onboarding</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0d59f2",
+              "background-light": "#f5f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#161e2e",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-hidden">
+<!-- Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#222f49] px-6 lg:px-10 py-4 bg-white dark:bg-[#101623] z-20">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Study Buddy</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<button class="flex items-center gap-2 cursor-pointer text-slate-500 dark:text-[#90a4cb] hover:text-primary transition-colors text-sm font-bold">
+<span class="material-symbols-outlined text-lg">help</span>
+<span class="hidden sm:inline">Help Center</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 lg:p-10 relative">
+<!-- Background Decorations -->
+<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 blur-[100px] rounded-full pointer-events-none"></div>
+<div class="w-full max-w-6xl flex flex-col gap-8 relative z-10">
+<!-- Progress Bar Component -->
+<div class="w-full max-w-3xl mx-auto">
+<div class="flex flex-col gap-3">
+<div class="flex gap-6 justify-between items-end">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal">Step 1 of 3: Initialization</p>
+<span class="text-primary text-sm font-bold">33%</span>
+</div>
+<div class="rounded-full bg-slate-200 dark:bg-[#314368] h-2 overflow-hidden">
+<div class="h-full rounded-full bg-primary shadow-[0_0_10px_rgba(13,89,242,0.6)]" style="width: 33%;"></div>
+</div>
+<p class="text-slate-500 dark:text-[#90a4cb] text-sm font-normal leading-normal">Subject Selection &amp; Calibration</p>
+</div>
+</div>
+<!-- Main Interaction Card -->
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-[#222f49] rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row min-h-[500px]">
+<!-- Left Column: Visual & Intro -->
+<div class="lg:w-5/12 p-8 lg:p-10 flex flex-col justify-between bg-gradient-to-b from-white to-slate-50 dark:from-[#161e2e] dark:to-[#0f1521] relative overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-[#222f49]">
+<!-- Content -->
+<div class="relative z-10 flex flex-col gap-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
+<span class="material-symbols-outlined text-primary text-sm">auto_awesome</span>
+<span class="text-primary text-xs font-bold uppercase tracking-wider">AI Powered</span>
+</div>
+<!-- Headline Component -->
+<h1 class="text-slate-900 dark:text-white tracking-tight text-[32px] sm:text-[40px] font-bold leading-[1.1]">
+                                Initialize Your <br/> <span class="text-primary">Learning Journey</span>
+</h1>
+<!-- Body Text Component -->
+<p class="text-slate-600 dark:text-[#90a4cb] text-base font-normal leading-relaxed">
+                                Welcome aboard. Study Buddy is your intelligent co-pilot for mastering the freight industry. Select your primary focus area to calibrate the AI curriculum for your goals.
+                            </p>
+</div>
+<!-- Prominent Graphic -->
+<div class="relative mt-8 h-48 lg:h-64 w-full rounded-xl overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-t from-background-light dark:from-[#0f1521] to-transparent z-10"></div>
+<div class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Futuristic digital blue wireframe of global logistics network connecting points on a map" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLxe10MbsA2S4aIRZWu1RlUIfN0e-Rg5ShwrKK-x-cy_KOiz3Ogyj8VzLDgkhBsPwCVyNqT2h6dmxNouVLmNb24Chs_D0aJbsX4i-_M4S7d-ivOpzEQZA1wbtTBW75XNTE-KQahj6XvzehXHfgrB2Pfs-gJxBZZ6T5ij3FPA-RYVZRYyj4YEpqEHtHqHUlmHWJlWsCWO5SvwzIR7UkBWcsWMP8bBjpzRxLQsWO0UGwsnmVZTGjSgVTfLUkMuRkuOOFe4qbcNkBvC-L');">
+</div>
+<div class="absolute bottom-4 left-4 z-20 flex items-center gap-2">
+<div class="size-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-mono">SYSTEM_READY</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Selection Form -->
+<div class="lg:w-7/12 p-6 lg:p-10 flex flex-col bg-slate-50 dark:bg-[#101623]/50">
+<div class="flex flex-col h-full">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Select Primary Focus
+                            </h3>
+<!-- ImageGrid / Selection Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+<!-- Option 1 (Selected) -->
+<label class="cursor-pointer group relative">
+<input checked="" class="peer sr-only" name="subject" type="radio"/>
+<div class="flex flex-col gap-3 p-4 rounded-xl border-2 border-primary bg-white dark:bg-[#1c2638] shadow-lg shadow-primary/10 transition-all duration-200">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden">
+<div class="w-full h-full bg-center bg-cover" data-alt="People working in a modern office looking at screens" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAktq6Ho8ejIY8OHS6BXNwcFIoGlH0c7L7USxsW1XItaPJQfYPjgR4WV98M9dlge5Lao2amEvebb-lkppd9iMNEarAI4SOxRToCkSWVeg0BeXlC7XJ2NuCxcmDD0CKm8Mf2zYxCEGPVtbuPWaZ_fMaaEJo2HHS3sAbrUfcOYvstSMeJHgdmAHbxpHLodW-Sj_BYpBy7-QwmRwYqIWtQf6V0VHWOfLyIad6Ci0thsWCvafbObR4c-YDBbtDw7dQTmPkrZsMsnEHRNBeu');"></div>
+<div class="absolute inset-0 bg-primary/20"></div>
+<div class="absolute top-2 right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded">Selected</div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Freight Brokering</p>
+<p class="text-slate-500 dark:text-[#90a4cb] text-sm font-normal leading-normal mt-1">Master negotiations, loads, and carrier relationships.</p>
+</div>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="cursor-pointer group relative">
+<input class="peer sr-only" name="subject" type="radio"/>
+<div class="flex flex-col gap-3 p-4 rounded-xl border border-slate-200 dark:border-[#222f49] bg-white dark:bg-[#161e2e] hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#1c2638] transition-all duration-200 peer-checked:border-primary peer-checked:shadow-lg peer-checked:shadow-primary/10">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden">
+<div class="w-full h-full bg-center bg-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Dispatchers looking at monitors with maps and truck routes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDbeHvduTuYY7rdign6GTg6guhp5ulm3U8xSLL6h-lYke3E3w0O12_cL6y3xJkcB7sqHeTgyGTN82y20jJ6kWRhGIYtao4bgnkZP9TnR59WHP4tzHOJhQS2vzrg4VgkX0MYZbv-6mhV2BSBfPNyPrgEUZaHjiWz_gvckDpeGSuhFuX973mT-yADcLY4BMctF6F9jxAJdSZ8_-4mUHYVWGsk6oLpWOgIgzTI5ba-VE5rtpROs__1O3CdG0qeUEgkpmmqU4VJf26wbRxx');"></div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Dispatching</p>
+<p class="text-slate-500 dark:text-[#90a4cb] text-sm font-normal leading-normal mt-1">Coordinate fleets efficiently and optimize schedules.</p>
+</div>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="cursor-pointer group relative sm:col-span-2 lg:col-span-1">
+<input class="peer sr-only" name="subject" type="radio"/>
+<div class="flex flex-col gap-3 p-4 rounded-xl border border-slate-200 dark:border-[#222f49] bg-white dark:bg-[#161e2e] hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#1c2638] transition-all duration-200 peer-checked:border-primary peer-checked:shadow-lg peer-checked:shadow-primary/10">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden">
+<div class="w-full h-full bg-center bg-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Large semi truck driving on a highway at sunset" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB10RHDSYL3NSB_DQysQB2DPcsE8NHPMH2vMby_JEtrwJfM1tfBtbMHa86RPehuz49koYlGkepMFMPozr41IQCSUNYJeJ7S3BToU3m4Zk5q8WJTLYM6NytDk_T2jiz-z03hfFjpdGoT-_gsTuviw5w88dMosfDHUxUwhrHSpkQU1ubLjNwVE0GVGEzxDyH5X7HaBmAHbK9nUUgXPAT29WMrXb7vNqWjs1lze04WA8SzAMCixdEhwlJoc7iPVPYbLkNYM-_t39uBtDW-');"></div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Trucking Operations</p>
+<p class="text-slate-500 dark:text-[#90a4cb] text-sm font-normal leading-normal mt-1">Understand the logistics of route planning and compliance.</p>
+</div>
+</div>
+</label>
+</div>
+<!-- Footer Actions -->
+<div class="mt-auto flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-200 dark:border-[#222f49]">
+<button class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium hover:text-slate-900 dark:hover:text-white transition-colors">
+                                    Back
+                                </button>
+<button class="w-full sm:w-auto flex min-w-[140px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-8 bg-primary hover:bg-blue-600 transition-all text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-blue-900/20">
+<span>Continue</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

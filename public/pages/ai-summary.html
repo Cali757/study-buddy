@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Buddy AI Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101623", // Matched to provided example
+                        "surface-dark": "#182234",
+                        "surface-border": "#314368",
+                        "text-secondary": "#90a4cb"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Inter", "sans-serif"] // Added for body text readability as per plan
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark mode feeling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101623; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #314368; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5f8a; 
+        }
+        .font-body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col overflow-x-hidden font-display selection:bg-primary selection:text-white">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-b-surface-border/50 bg-background-dark/95 backdrop-blur-md px-6 py-3">
+<div class="mx-auto max-w-7xl flex items-center justify-between whitespace-nowrap">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined" style="font-size: 32px;">school</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-tight">Study Buddy</h2>
+</div>
+<div class="hidden lg:flex flex-1 justify-center gap-8">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Home</a>
+<a class="text-primary text-sm font-medium leading-normal" href="#">Modules</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">My Progress</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Community</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-lg bg-surface-dark border border-surface-border text-white hover:bg-surface-border transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-lg bg-surface-dark border border-surface-border text-white hover:bg-surface-border transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+<!-- User Avatar -->
+<div class="relative size-10 overflow-hidden rounded-full border border-surface-border bg-center bg-cover" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzLBlEYk0bwJjE0NT09cmJdaGItJubJFpfKKbzmeSSgb2oc3Hw1jVX1vs8ZTXwXqcw6S_Mwtcaxgr3KN7ynNfTTNzCTvVriKm8W3CNAi3pN08TSJhj103utlLG7PQPZJ-HfzLhs8uG2Nn45vKQzG-V7hn2Pdsk6cKuZ6eAw4QFALNWPpUgWMyI5YXezaHWf2JJODpLcHogasHRWmPpkn-Oleoc941f-0958THCulnFqkCLErQNloo8d7JqYLpg9d1CSYVwTaRyphWE");'>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 w-full px-6 py-8 mx-auto max-w-7xl">
+<!-- Breadcrumbs -->
+<nav class="mb-6 flex flex-wrap gap-2 text-sm text-text-secondary">
+<a class="hover:text-white transition-colors" href="#">Home</a>
+<span>/</span>
+<a class="hover:text-white transition-colors" href="#">Freight Brokering</a>
+<span>/</span>
+<span class="text-white font-medium">Chapter 1: Negotiations</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Content (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Page Heading -->
+<div class="flex flex-col gap-4 border-b border-surface-border pb-6">
+<div class="flex justify-between items-start gap-4 flex-wrap">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="bg-primary/20 text-primary text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">AI Summary</span>
+<span class="text-text-secondary text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 5 min read
+                                </span>
+</div>
+<h1 class="text-white text-3xl md:text-5xl font-black leading-tight tracking-tight">Mastering Freight Negotiations</h1>
+<p class="text-text-secondary text-base md:text-lg font-body max-w-2xl">
+                                An intelligent breakdown of spot market dynamics, dispatcher roles, and key liability clauses generated by Study Buddy AI.
+                            </p>
+</div>
+<button class="group flex items-center gap-2 px-4 py-2 bg-surface-dark border border-surface-border hover:border-primary text-white text-sm font-bold rounded-lg transition-all shadow-lg hover:shadow-primary/20">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform">refresh</span>
+<span>Regenerate</span>
+</button>
+</div>
+</div>
+<!-- Accordion Section -->
+<div class="flex flex-col gap-4">
+<!-- Accordion Item 1 (Expanded) -->
+<div class="group rounded-xl border border-surface-border bg-surface-dark overflow-hidden transition-all hover:border-primary/50">
+<button class="w-full flex items-center justify-between p-5 text-left bg-surface-dark border-b border-surface-border/30">
+<div class="flex items-center gap-3">
+<span class="flex items-center justify-center size-8 rounded-full bg-primary/20 text-primary font-bold text-sm">1</span>
+<h3 class="text-white text-xl font-bold">Understanding Spot Rates</h3>
+</div>
+<span class="material-symbols-outlined text-white rotate-180">expand_less</span>
+</button>
+<div class="p-6 text-text-secondary font-body leading-relaxed space-y-4">
+<p>
+                                Spot rates fluctuate daily based on supply and demand. Unlike contract rates, which are locked in for a set period, spot rates are negotiated on a per-load basis. 
+                                <strong class="text-white">Key factors influencing these rates include:</strong>
+</p>
+<ul class="list-disc pl-5 space-y-1 marker:text-primary">
+<li><strong>Fuel Costs:</strong> Directly impact the carrier's bottom line.</li>
+<li><strong>Lane Balance:</strong> Headhaul vs. backhaul lanes significantly change leverage.</li>
+<li><strong>Seasonality:</strong> Produce season or holiday rushes tighten capacity.</li>
+</ul>
+<div class="p-4 bg-background-dark rounded-lg border border-surface-border/50 text-sm flex gap-3 items-start">
+<span class="material-symbols-outlined text-primary mt-0.5">lightbulb</span>
+<span>
+<strong class="text-white">Pro Tip:</strong> Use load-to-truck ratios to gauge your negotiating power before making the first call.
+                                </span>
+</div>
+</div>
+</div>
+<!-- Accordion Item 2 (Collapsed) -->
+<div class="group rounded-xl border border-surface-border bg-surface-dark overflow-hidden transition-all hover:border-primary/50">
+<button class="w-full flex items-center justify-between p-5 text-left bg-surface-dark">
+<div class="flex items-center gap-3">
+<span class="flex items-center justify-center size-8 rounded-full bg-surface-border/30 text-text-secondary group-hover:bg-primary/20 group-hover:text-primary transition-colors font-bold text-sm">2</span>
+<h3 class="text-white text-xl font-bold">The Role of the Dispatcher</h3>
+</div>
+<span class="material-symbols-outlined text-text-secondary">expand_more</span>
+</button>
+</div>
+<!-- Accordion Item 3 (Collapsed) -->
+<div class="group rounded-xl border border-surface-border bg-surface-dark overflow-hidden transition-all hover:border-primary/50">
+<button class="w-full flex items-center justify-between p-5 text-left bg-surface-dark">
+<div class="flex items-center gap-3">
+<span class="flex items-center justify-center size-8 rounded-full bg-surface-border/30 text-text-secondary group-hover:bg-primary/20 group-hover:text-primary transition-colors font-bold text-sm">3</span>
+<h3 class="text-white text-xl font-bold">Legal Liability &amp; Insurance</h3>
+</div>
+<span class="material-symbols-outlined text-text-secondary">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Bottom Action Bar -->
+<div class="mt-4 flex flex-wrap gap-4 items-center">
+<button class="flex-1 bg-primary hover:bg-blue-600 text-white h-12 rounded-lg font-bold text-sm tracking-wide shadow-[0_0_20px_rgba(13,89,242,0.3)] hover:shadow-[0_0_30px_rgba(13,89,242,0.5)] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">quiz</span>
+                        Take Quiz on This Topic
+                    </button>
+<button class="px-6 h-12 rounded-lg border border-surface-border bg-surface-dark hover:bg-surface-border text-white font-bold text-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">bookmark</span>
+                        Save to Notes
+                    </button>
+<button class="px-6 h-12 rounded-lg border border-surface-border bg-surface-dark hover:bg-surface-border text-white font-bold text-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">download</span>
+                        Export PDF
+                    </button>
+</div>
+</div>
+<!-- Right Column: Context Widgets (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Progress Widget -->
+<div class="p-6 rounded-xl border border-surface-border bg-surface-dark shadow-xl">
+<div class="flex justify-between items-end mb-3">
+<h4 class="text-white font-bold">Module Progress</h4>
+<span class="text-primary font-bold text-xl">65%</span>
+</div>
+<div class="h-2 w-full bg-[#101623] rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full relative" style="width: 65%;">
+<div class="absolute right-0 top-0 bottom-0 w-2 bg-white/30 animate-pulse"></div>
+</div>
+</div>
+<p class="text-text-secondary text-sm mt-3">You're on a roll! Finish this summary to unlock the quiz.</p>
+</div>
+<!-- Key Insight Card -->
+<div class="p-6 rounded-xl border border-primary/30 bg-gradient-to-br from-surface-dark to-[#121c2e] shadow-lg relative overflow-hidden group">
+<!-- Glow effect -->
+<div class="absolute -top-10 -right-10 size-32 bg-primary/20 blur-3xl rounded-full"></div>
+<div class="flex items-center justify-between mb-4 relative z-10">
+<h1 class="text-white text-sm font-bold uppercase tracking-widest text-primary">Key Insight</h1>
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div class="relative z-10">
+<p class="text-text-secondary text-xs uppercase font-bold tracking-wider mb-1">Golden Rule #1</p>
+<p class="text-white text-2xl font-black leading-tight mb-4">
+                            "Always verify insurance before booking."
+                        </p>
+<div class="space-y-2">
+<div class="flex items-center gap-3 text-sm text-text-secondary">
+<span class="material-symbols-outlined text-green-400 text-[18px]">check_circle</span>
+<span>Check liability limits</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-text-secondary">
+<span class="material-symbols-outlined text-green-400 text-[18px]">check_circle</span>
+<span>Confirm cargo coverage</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Data Visualization Widget -->
+<div class="p-6 rounded-xl border border-surface-border bg-surface-dark">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-white font-bold">Avg Spot Rates</h4>
+<select class="bg-[#101623] border border-surface-border text-xs text-white rounded p-1">
+<option>Last 6 Mos</option>
+<option>Yearly</option>
+</select>
+</div>
+<!-- CSS Bar Chart -->
+<div class="flex items-end justify-between h-40 gap-2 font-display text-xs text-text-secondary">
+<!-- Bar 1 -->
+<div class="flex flex-col items-center gap-2 w-full h-full justify-end group cursor-pointer">
+<div class="relative w-full bg-[#222f49] rounded-t-md overflow-hidden transition-all group-hover:bg-[#2a3a5a]" style="height: 45%;">
+<div class="absolute bottom-0 w-full bg-primary/40 h-full"></div>
+</div>
+<span>Jan</span>
+</div>
+<!-- Bar 2 -->
+<div class="flex flex-col items-center gap-2 w-full h-full justify-end group cursor-pointer">
+<div class="relative w-full bg-[#222f49] rounded-t-md overflow-hidden transition-all group-hover:bg-[#2a3a5a]" style="height: 60%;">
+<div class="absolute bottom-0 w-full bg-primary/50 h-full"></div>
+</div>
+<span>Feb</span>
+</div>
+<!-- Bar 3 -->
+<div class="flex flex-col items-center gap-2 w-full h-full justify-end group cursor-pointer">
+<div class="relative w-full bg-[#222f49] rounded-t-md overflow-hidden transition-all group-hover:bg-[#2a3a5a]" style="height: 35%;">
+<div class="absolute bottom-0 w-full bg-primary/40 h-full"></div>
+</div>
+<span>Mar</span>
+</div>
+<!-- Bar 4 (Active) -->
+<div class="flex flex-col items-center gap-2 w-full h-full justify-end group cursor-pointer">
+<span class="text-white font-bold mb-1 opacity-0 group-hover:opacity-100 transition-opacity absolute -mt-6">$2.4</span>
+<div class="relative w-full bg-primary rounded-t-md overflow-hidden shadow-[0_0_15px_rgba(13,89,242,0.4)]" style="height: 85%;">
+<div class="absolute top-0 w-full bg-white/20 h-1"></div>
+</div>
+<span class="text-white font-bold">Apr</span>
+</div>
+<!-- Bar 5 -->
+<div class="flex flex-col items-center gap-2 w-full h-full justify-end group cursor-pointer">
+<div class="relative w-full bg-[#222f49] rounded-t-md overflow-hidden transition-all group-hover:bg-[#2a3a5a]" style="height: 70%;">
+<div class="absolute bottom-0 w-full bg-primary/60 h-full"></div>
+</div>
+<span>May</span>
+</div>
+</div>
+</div>
+<!-- Quick Stats / Map -->
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-xl border border-surface-border bg-surface-dark flex flex-col justify-center items-center text-center">
+<span class="text-3xl font-black text-white">3</span>
+<span class="text-xs text-text-secondary uppercase tracking-wider mt-1">New Terms</span>
+</div>
+<div class="p-4 rounded-xl border border-surface-border bg-surface-dark flex flex-col justify-center items-center text-center">
+<span class="text-3xl font-black text-white">8/10</span>
+<span class="text-xs text-text-secondary uppercase tracking-wider mt-1">Quiz Avg</span>
+</div>
+</div>
+<!-- Map Widget -->
+<div class="relative h-32 w-full rounded-xl overflow-hidden border border-surface-border group">
+<div class="absolute inset-0 bg-black/40 z-10 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+<button class="px-3 py-1 bg-white/10 backdrop-blur border border-white/20 rounded-full text-xs font-bold text-white flex items-center gap-1 hover:bg-primary hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[14px]">map</span> View Lane Map
+                        </button>
+</div>
+<img alt="Abstract map background showing logistics routes" class="w-full h-full object-cover grayscale opacity-60" data-alt="Abstract dark map background showing logistics routes" data-location="North America Logistics Map" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSS05BLxMA_zfwO9Lnip9yT39nuEwnMILqhJH7dlaQXqy3qYoOhQbj9LmzVBdgnujDe4V3tBrOHr4kKEg6stMpUzsdLlgfuMKfFhY6pkclfRJb6e3d2GPVR1h0n44dMHAZoI2arTC2jUfR2MbjSbx3JsGG_ekJB4ZoR8vcKetv_JXRJzmjGvmPBQ3oT3sp-buk8MkBaSP_rD8jje6vcFyfTg5pi5fwKjB8tJ5uBS5IsdscF-80ONO5iszXoNMbHYzKflbYZ7TkSeuf"/>
+</div>
+</div>
+</div>
+</main>
+</body></html>
