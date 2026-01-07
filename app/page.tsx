@@ -1,5 +1,10 @@
-import StitchLandingPage from "./stitch/page";
+'use client';
+import { useEffect } from 'react';
 
 export default function Home() {
-  return <StitchLandingPage />;
+  useEffect(() => {
+    window.location.href = '/pages/landing.html';
+  }, []);
+  
+  return <div>Redirecting...</div>;
 }
