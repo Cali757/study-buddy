@@ -59,10 +59,10 @@
 <h2 class="text-xl font-bold leading-tight tracking-tight">Study Buddy</h2>
 </div>
 <nav class="hidden md:flex items-center gap-6">
-<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
-<a class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium hover:text-primary transition-colors" href="#">Lessons</a>
-<a class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium hover:text-primary transition-colors" href="#">Quizzes</a>
-<a class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium hover:text-primary transition-colors" href="#">Community</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="/pages/dashboard.html">Dashboard</a>
+<a class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium hover:text-primary transition-colors" href="/pages/lesson.html">Lessons</a>
+<a class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium hover:text-primary transition-colors" href="/pages/quiz.html">Quizzes</a>
+<a class="text-slate-500 dark:text-[#90a4cb] text-sm font-medium hover:text-primary transition-colors" href="/pages/progress.html">Community</a>
 </nav>
 </div>
 <div class="flex items-center gap-4">
@@ -139,7 +139,7 @@
 <div class="rounded-xl overflow-hidden bg-card-light dark:bg-card-dark border border-slate-200 dark:border-[#222f49] flex flex-col h-[400px]">
 <div class="px-6 py-4 border-b border-slate-200 dark:border-[#222f49] flex justify-between items-center bg-card-light dark:bg-[#182234]">
 <h3 class="font-bold text-lg">Your Knowledge Route</h3>
-<button class="text-xs font-medium text-primary hover:text-white hover:bg-primary px-3 py-1 rounded-md transition-all">View Full Map</button>
+<a href="/pages/quiz.html"><a href="/pages/progress.html"><button class="text-xs font-medium text-primary hover:text-white hover:bg-primary px-3 py-1 rounded-md transition-all">View Full Map</button>
 </div>
 <div class="relative flex-1 bg-cover bg-center group" data-alt="Stylized dark digital map with glowing blue route lines connecting city nodes representing learning modules" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCaxZLR3N6jGOrd4n5VN3IMjArve5-9ewJYQCw2m8Odx0lV5grEdEMKAvgida-QBMNxJ1zX2qp9t3sThKpsCCZEvFopyye7W_W6wX9Igx_44Fc-sRP43I6dIG6oMSsEDLxy2VBoJxLsy4mWj_NgOMlh9k1-7MZXuN-yJm-zrM5SSNiMGusYCi5veQGPUeej0kkyw3Wl3i9KwPYir2XlMiqFTR_ZMQH_f1H8XdJTqTO24_yPolGREueFcjZPu8HlMT74jtNdoszrprht');">
 <!-- Dark Overlay -->
@@ -287,12 +287,12 @@
 <button class="w-full py-2 bg-primary hover:bg-blue-600 text-white text-sm font-medium rounded transition-colors flex items-center justify-center gap-2">
 <span class="material-symbols-outlined text-[16px]">play_arrow</span>
                                 Continue Haul
-                            </button>
+                            </button></a>
 </div>
 <!-- Card 2 -->
 <div class="bg-background-light dark:bg-[#101622] rounded-lg p-4 border border-slate-200 dark:border-[#222f49] hover:border-primary transition-colors cursor-pointer opacity-75 hover:opacity-100">
 <div class="flex justify-between items-start mb-2">
-<span class="bg-purple-500/20 text-purple-300 text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wider">Quiz</span>
+<a href="/pages/quiz.html"><span class="bg-purple-500/20 text-purple-300 text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wider">Quiz</span></a>
 <span class="material-symbols-outlined text-slate-500 text-sm">more_horiz</span>
 </div>
 <h4 class="font-bold text-md mb-3 leading-snug">Safety Compliance Check</h4>
@@ -304,7 +304,7 @@
 </div>
 <button class="w-full py-2 bg-background-dark border border-slate-600 hover:border-white text-white text-sm font-medium rounded transition-colors flex items-center justify-center gap-2">
                                 Start Engine
-                            </button>
+                            </button></a>
 </div>
 </div>
 </div>
