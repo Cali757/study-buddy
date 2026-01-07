@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { signUp } from '@/lib/auth';
 import Link from 'next/link';
+import { StitchShell } from '@/components/StitchShell';
 
 export default function SignupPage() {
   const [email, setEmail] = useState('');
@@ -70,8 +71,8 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
+    <StitchShell title="Sign Up">
+      <div className="max-w-md w-full mx-auto space-y-8 p-8 bg-white rounded-lg shadow-sm border border-slate-200">
         <div>
           <h2 className="text-center text-3xl font-bold text-gray-900">Create your account</h2>
           <p className="text-center text-sm text-green-700 mt-2">Lesson Completed Successfully</p>
@@ -144,6 +145,6 @@ export default function SignupPage() {
           </div>
         </form>
       </div>
-    </div>
+    </StitchShell>
   );
 }

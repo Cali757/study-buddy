@@ -7,6 +7,7 @@ import { onAuthChange } from "@/lib/auth";
 import { User } from "firebase/auth";
 import { getQuizById, completeQuiz, getUserProgress } from "@/lib/firestore";
 import { Question, Quiz } from "@/lib/types";
+import { StitchShell } from "@/components/StitchShell";
 
 type QuizState = {
   quiz: Quiz | null;
@@ -191,34 +192,17 @@ export default function QuizPage() {
 
   if (state.loading || progressLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-xl">Loading...</div>
-      </div>
+      <StitchShell title="Quiz">
+        <div className="min-h-[40vh] flex items-center justify-center text-xl">Loading...</div>
+      </StitchShell>
     );
   }
 
   if (state.error || !state.quiz) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <nav className="bg-white shadow">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16">
-              <div className="flex items-center">
-                <Link href="/" className="text-2xl font-bold text-blue-600">
-                  Study Buddy
-                </Link>
-              </div>
-              <div className="flex items-center space-x-4">
-                <Link href="/lessons" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">
-                  Lessons
-                </Link>
-              </div>
-            </div>
-          </div>
-        </nav>
-
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="bg-white rounded-lg shadow p-8 text-center">
+      <StitchShell title="Quiz">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-8 text-center">
             <h1 className="text-2xl font-bold text-gray-900 mb-4">
               {state.error === "Quiz not found" ? "Quiz Not Found" : "Unable to load quiz"}
             </h1>
@@ -237,33 +221,16 @@ export default function QuizPage() {
               </Link>
             </div>
           </div>
-        </main>
-      </div>
+        </div>
+      </StitchShell>
     );
   }
 
   const currentQuizId = state.quiz.id;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-blue-600">
-                Study Buddy
-              </Link>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link href="/lessons" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">
-                Lessons
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <StitchShell title={state.quiz.title ?? `Quiz ${currentQuizId}`}>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {progressError && (
           <div className="mb-4 bg-yellow-50 border border-yellow-200 text-yellow-800 rounded p-4">
             <p className="font-semibold">Progress Unavailable</p>
@@ -281,10 +248,9 @@ export default function QuizPage() {
             <p className="font-semibold">Score: {state.score.correct}/{state.score.total}</p>
           </div>
         )}
-        <h1 className="text-4xl font-bold text-gray-900 mb-6">{state.quiz.title ?? `Quiz ${currentQuizId}`}</h1>
-        <div className="bg-white rounded-lg shadow p-8 space-y-6">
+        <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-8 space-y-6">
           {state.questions.map((q, idx) => (
-            <div key={q.id} className="border p-4 rounded">
+            <div key={q.id} className="border border-slate-200 p-4 rounded">
               <p className="font-semibold mb-2">
                 Question {idx + 1}
               </p>
@@ -324,8 +290,8 @@ export default function QuizPage() {
             <p className="text-sm text-red-600">{state.error}</p>
           )}
         </div>
-      </main>
-    </div>
+      </div>
+    </StitchShell>
   );
 }
 
